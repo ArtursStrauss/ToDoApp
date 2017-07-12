@@ -5,6 +5,7 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface BusinessLogic {
     boolean addTask(Integer id,
@@ -15,7 +16,7 @@ public interface BusinessLogic {
 
     boolean removeTask(Task task);
 
-    Task getTaskById(Integer id);
+    Optional<Task> getTaskById(Integer id);
 
     Task update(Task task);
 

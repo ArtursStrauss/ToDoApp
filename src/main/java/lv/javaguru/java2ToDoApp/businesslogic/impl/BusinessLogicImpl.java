@@ -7,6 +7,7 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class BusinessLogicImpl implements BusinessLogic {
 
@@ -23,21 +24,28 @@ public class BusinessLogicImpl implements BusinessLogic {
 
     @Override
     public boolean removeTask(Task task) {
-        return false;
+        Optional<Task> foundTask = taskDao.getTaskById(task.getId());
+        if (foundTask.isPresent()) {
+            //Task task = foundTask.get();
+            taskDao.removeTask(foundTask.get());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public Task getTaskById(Integer id) {
-        return null;
+    public Optional<Task> getTaskById(Integer id) {
+        return taskDao.getTaskById(id);
     }
 
     @Override
     public Task update(Task task) {
-        return null;
+        return false;
     }
 
     @Override
     public List<Task> getAllTasks() {
-        return null;
+        return taskDao.getAllTasks();
     }
 }
