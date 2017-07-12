@@ -1,0 +1,8 @@
+* The user can:
+    * add,
+    * edit,
+    * remove tasks
+
+
+
+https://github.com/benas/todolist-mvc

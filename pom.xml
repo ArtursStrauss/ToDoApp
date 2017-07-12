@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lv.javaguru</groupId>
-    <artifactId>java2-ToDoApp</artifactId>
+    <artifactId>java2ToDoApp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -30,6 +30,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.2.1</version>
+        </dependency>
+        <dependency>
+
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r05</version>
         </dependency>
 
     </dependencies>
