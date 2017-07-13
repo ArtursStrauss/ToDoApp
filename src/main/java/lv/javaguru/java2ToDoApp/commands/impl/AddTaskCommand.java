@@ -29,9 +29,11 @@ public class AddTaskCommand implements Command {
 
         System.out.println("Enter task ID (integer):");
         Integer id = sc.nextInt();
+        sc.nextLine();
         System.out.print("Enter task:");
         String title = sc.nextLine();
-        System.out.print("Enter due date (format: YYYY-MM-DD):");
+
+        System.out.println("Enter due date (format: YYYY-MM-DD):");
         String dueDateString = sc.nextLine();
         DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
         Date dueDate = new Date();
@@ -40,7 +42,7 @@ public class AddTaskCommand implements Command {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.print("Enter priority (LOW, MEDIUM, HIGH):");
+        System.out.println("Enter priority (LOW, MEDIUM, HIGH):");
         String priorityString = sc.nextLine();
 
         Priority priority = Priority.valueOf(priorityString);
