@@ -14,12 +14,13 @@ public class TaskDatabaseImpl implements TaskDatabase {
 
     @Override
     public void addTask(Task task) {
-        tasks.add(task);
+        this.tasks.add(task);
     }
 
     @Override
     public void removeTask(Task task) {
-        tasks.remove(task);
+
+        this.tasks.remove(task);
     }
 
     @Override
@@ -30,12 +31,17 @@ public class TaskDatabaseImpl implements TaskDatabase {
     }
 
     @Override
-    public Task update(Task task) {
-        return null;
+    public void updateTask(Task task) {
+
+        Optional<Task> foundTask = this.getTaskById(task.getId());
+
+        int index = this.tasks.indexOf(foundTask.get());
+        this.tasks.set(index, task);
     }
 
     @Override
     public List<Task> getAllTasks() {
-        return Lists.newArrayList(tasks);
+
+        return Lists.newArrayList(this.tasks);
     }
 }

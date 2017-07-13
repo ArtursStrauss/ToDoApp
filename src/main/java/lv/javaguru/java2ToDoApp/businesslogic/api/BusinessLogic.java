@@ -18,7 +18,7 @@ public interface BusinessLogic {
 
     Optional<Task> getTaskById(Integer id);
 
-    Task update(Task task);
+    void updateTask(Task task);
 
     List<Task> getAllTasks();
 }

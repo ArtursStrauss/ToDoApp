@@ -14,11 +14,13 @@ public class BusinessLogicImpl implements BusinessLogic {
     private TaskDatabase taskDao;
 
     public BusinessLogicImpl(TaskDatabase taskDao) {
+
         this.taskDao = taskDao;
     }
 
     @Override
     public boolean addTask(Integer id, String title, boolean done, Date dueDate, Priority priority) {
+
         return false;
     }
 
@@ -36,16 +38,19 @@ public class BusinessLogicImpl implements BusinessLogic {
 
     @Override
     public Optional<Task> getTaskById(Integer id) {
+
         return taskDao.getTaskById(id);
     }
 
     @Override
-    public Task update(Task task) {
-        return false;
+    public void updateTask(Task task) {
+
+        taskDao.updateTask(task);
     }
 
     @Override
     public List<Task> getAllTasks() {
+
         return taskDao.getAllTasks();
     }
 }
