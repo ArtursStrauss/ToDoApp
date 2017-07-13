@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BusinessLogic {
-    boolean addTask(Integer id,
+    void addTask(Integer id,
                     String title,
                     boolean done,
                     Date dueDate,

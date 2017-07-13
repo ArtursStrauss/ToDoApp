@@ -1,5 +1,16 @@
 package lv.javaguru.java2ToDoApp;
 
+import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
+import lv.javaguru.java2ToDoApp.commands.api.Command;
+import lv.javaguru.java2ToDoApp.commands.impl.AddTaskCommand;
+import lv.javaguru.java2ToDoApp.commands.impl.PrintTaskListCommand;
+import lv.javaguru.java2ToDoApp.commands.impl.RemoveTaskCommand;
+import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+import lv.javaguru.java2ToDoApp.database.impl.TaskDatabaseImpl;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ToDoApplication {
@@ -9,6 +20,15 @@ public class ToDoApplication {
         // 2. Remove task from list
         // 3. Print task list to console
         // 4. Exit
+
+        TaskDatabase taskDatabase = new TaskDatabaseImpl();
+        BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase);
+
+        Map<Integer, Command> commands = new HashMap<>();
+        commands.put(1, new AddTaskCommand(businessLogic));
+        commands.put(2, new RemoveTaskCommand(businessLogic));
+        commands.put(3, new PrintTaskListCommand(businessLogic));
+
 
         while (true) {
             printProgramMenu();

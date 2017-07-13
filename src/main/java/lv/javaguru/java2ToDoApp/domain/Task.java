@@ -88,7 +88,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "id=" + id +
+                "id=" + id + "." +
                 ", title='" + title + '\'' +
                 ", done=" + done +
                 ", dueDate=" + dueDate +

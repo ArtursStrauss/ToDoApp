@@ -19,9 +19,17 @@ public class BusinessLogicImpl implements BusinessLogic {
     }
 
     @Override
-    public boolean addTask(Integer id, String title, boolean done, Date dueDate, Priority priority) {
+    public void addTask(Integer id, String title, boolean done, Date dueDate, Priority priority) {
 
-        return false;
+        Task task = new Task();
+        task.setId(id);
+        task.setTitle(title);
+        task.setDone(done);
+        task.setDueDate(dueDate);
+        task.setPriority(priority);
+
+        taskDao.addTask(task);
+
     }
 
     @Override
