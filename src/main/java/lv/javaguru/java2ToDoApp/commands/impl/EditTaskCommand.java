@@ -76,13 +76,12 @@ public class EditTaskCommand implements Command {
 
             businessLogic.updateTask(foundTask.get());
 
-            //////////////BL END//////////
+            ///////////////////////BL END/////////////////
 
             System.out.println("Add task to list! Execution end!");
             System.out.println();
         } else {
             System.out.println("There is no task with such id: " + id);
         }
-
     }
 }
