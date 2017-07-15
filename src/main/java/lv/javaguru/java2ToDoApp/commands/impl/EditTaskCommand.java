@@ -33,41 +33,48 @@ public class EditTaskCommand implements Command {
         Optional<Task> foundTask = businessLogic.getTaskById(id);
         if (foundTask.isPresent()) {
 
-
             System.out.print("Edit task title (if not, leave blank):");
             String title = sc.nextLine();
+
+            if (!title.isEmpty()) {
+                foundTask.get().setTitle(title);
+            }
 
             System.out.print("Edit task status (true, false)  (if not, leave blank):");
             String stringBoolean = sc.nextLine();
 
-            Boolean done = Boolean.parseBoolean(stringBoolean);
-            //Boolean done = sc.nextBoolean();
+            if (!stringBoolean.isEmpty()) {
+
+                Boolean done = Boolean.parseBoolean(stringBoolean);
+                foundTask.get().setDone(done);
+            }
 
             System.out.println("Edit due date (format: YYYY-MM-DD) (if not, leave blank):");
             String dueDateString = sc.nextLine();
 
-            Date dueDate = new Date();
+            if (!dueDateString.isEmpty()) {
 
-            if (sc.hasNextLine()) {
-
+                Date dueDate = new Date();
                 DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     dueDate = formatter.parse(dueDateString);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                foundTask.get().setDueDate(dueDate);
             }
 
             System.out.println("Edit priority (LOW, MEDIUM, HIGH) (if not, leave blank):");
             String priorityString = sc.nextLine();
-            Priority priority = null;
-            if (sc.hasNext()) {
-                priority = Priority.valueOf(priorityString);
+
+            if (!dueDateString.isEmpty()) {
+                Priority priority = Priority.valueOf(priorityString);
+                foundTask.get().setPriority(priority);
             }
+
             ///////////////////////BL/////////////////////
 
-            Task task = new Task(id, title, done, dueDate, priority);
-            businessLogic.updateTask(task);
+            businessLogic.updateTask(foundTask.get());
 
             //////////////BL END//////////
 

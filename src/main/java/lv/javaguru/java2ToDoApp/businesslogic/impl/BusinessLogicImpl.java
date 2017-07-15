@@ -36,7 +36,7 @@ public class BusinessLogicImpl implements BusinessLogic {
     public boolean removeTask(Task task) {
         Optional<Task> foundTask = taskDao.getTaskById(task.getId());
         if (foundTask.isPresent()) {
-            //Task task = foundTask.get();
+
             taskDao.removeTask(foundTask.get());
             return true;
         } else {
