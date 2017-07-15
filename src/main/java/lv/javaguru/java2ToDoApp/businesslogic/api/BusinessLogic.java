@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface BusinessLogic {
     void addTask(Integer id,
                     String title,
-                    boolean done,
+                    Boolean done,
                     Date dueDate,
                     Priority priority);
 

@@ -19,7 +19,7 @@ public class BusinessLogicImpl implements BusinessLogic {
     }
 
     @Override
-    public void addTask(Integer id, String title, boolean done, Date dueDate, Priority priority) {
+    public void addTask(Integer id, String title, Boolean done, Date dueDate, Priority priority) {
 
         Task task = new Task();
         task.setId(id);

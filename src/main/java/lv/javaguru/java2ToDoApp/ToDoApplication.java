@@ -4,6 +4,7 @@ import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
 import lv.javaguru.java2ToDoApp.commands.api.Command;
 import lv.javaguru.java2ToDoApp.commands.impl.AddTaskCommand;
+import lv.javaguru.java2ToDoApp.commands.impl.EditTaskCommand;
 import lv.javaguru.java2ToDoApp.commands.impl.PrintTaskListCommand;
 import lv.javaguru.java2ToDoApp.commands.impl.RemoveTaskCommand;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
@@ -18,8 +19,9 @@ public class ToDoApplication {
         // Use cases:
         // 1. Add task to list
         // 2. Remove task from list
-        // 3. Print task list to console
-        // 4. Exit
+        // 3. Edit task from list
+        // 4. Print task list to console
+        // 5. Exit
 
         TaskDatabase taskDatabase = new TaskDatabaseImpl();
         BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase);
@@ -27,13 +29,14 @@ public class ToDoApplication {
         Map<Integer, Command> commands = new HashMap<>();
         commands.put(1, new AddTaskCommand(businessLogic));
         commands.put(2, new RemoveTaskCommand(businessLogic));
-        commands.put(3, new PrintTaskListCommand(businessLogic));
+        commands.put(3, new EditTaskCommand(businessLogic));
+        commands.put(4, new PrintTaskListCommand(businessLogic));
 
 
         while (true) {
             printProgramMenu();
             int menuItem = getFromUserMenuItemToExecute();
-            if (menuItem == 4) {
+            if (menuItem == 5) {
                 break;
             } else {
                 Command command = commands.get(menuItem);
@@ -46,8 +49,9 @@ public class ToDoApplication {
         System.out.println("ToDO Program Menu:");
         System.out.println("1. Add task to list");
         System.out.println("2. Remove task from list");
-        System.out.println("3. Print task list to console");
-        System.out.println("4. Exit");
+        System.out.println("3. Edit task from list");
+        System.out.println("4. Print task list to console");
+        System.out.println("5. Exit");
     }
 
     private static int getFromUserMenuItemToExecute() {

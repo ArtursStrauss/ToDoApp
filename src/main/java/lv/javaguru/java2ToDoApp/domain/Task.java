@@ -1,12 +1,13 @@
 package lv.javaguru.java2ToDoApp.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Task {
 
     private Integer id;
     private String title;
-    private boolean done;
+    private Boolean done;
     private Date dueDate;
     private Priority priority;
 
@@ -14,7 +15,7 @@ public class Task {
         this.priority = Priority.LOW;
     }
 
-    public Task(String title, boolean done, Priority priority, Date dueDate) {
+    public Task(String title, Boolean done, Priority priority, Date dueDate) {
         this.title = title;
         this.done = done;
         this.priority = priority;
@@ -41,7 +42,7 @@ public class Task {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(Boolean done) {
         this.done = done;
     }
 
@@ -59,6 +60,26 @@ public class Task {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public boolean idNotNull() {
+        return this.id != null;
+    }
+
+    public boolean titleNotNull() {
+        return this.title != null;
+    }
+
+    public boolean doneNotNull() {
+        return this.done != null;
+    }
+
+    public boolean dueDateNotNull() {
+        return this.dueDate != null;
+    }
+
+    public boolean priorityNotNull() {
+        return this.priority != null;
     }
 
     @Override
@@ -87,11 +108,14 @@ public class Task {
 
     @Override
     public String toString() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+
         return "Task{" +
                 "id=" + id + "." +
                 ", title='" + title + '\'' +
                 ", done=" + done +
-                ", dueDate=" + dueDate +
+                ", dueDate=" + dateFormat.format(dueDate) +
                 ", priority=" + priority +
                 '}';
     }

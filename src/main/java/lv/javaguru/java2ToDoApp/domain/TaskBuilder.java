@@ -5,7 +5,7 @@ import java.util.Date;
 public class TaskBuilder {
     private Integer id;
     private String title;
-    private boolean done;
+    private Boolean done;
     private Date dueDate;
     private Priority priority;
 
@@ -19,7 +19,7 @@ public class TaskBuilder {
 
     public static Task createTask(Integer id,
                                   String title,
-                                  boolean done,
+                                  Boolean done,
                                   Date dueDate,
                                   Priority priority) {
         return createTask()
@@ -50,7 +50,7 @@ public class TaskBuilder {
         return this;
     }
 
-    public TaskBuilder withDone(boolean done) {
+    public TaskBuilder withDone(Boolean done) {
         this.done = done;
         return this;
     }

@@ -35,6 +35,22 @@ public class TaskDatabaseImpl implements TaskDatabase {
 
         Optional<Task> foundTask = this.getTaskById(task.getId());
 
+        if (!task.titleNotNull()) {
+            task.setTitle(foundTask.get().getTitle());
+        }
+
+        if (!task.doneNotNull()) {
+            task.setDone(foundTask.get().isDone());
+        }
+
+        if (!task.dueDateNotNull()) {
+            task.setDueDate(foundTask.get().getDueDate());
+        }
+
+        if (!task.priorityNotNull()) {
+            task.setPriority(foundTask.get().getPriority());
+        }
+
         int index = this.tasks.indexOf(foundTask.get());
         this.tasks.set(index, task);
     }
