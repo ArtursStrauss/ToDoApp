@@ -30,34 +30,44 @@ public class EditTaskCommand implements Command {
         Integer id = sc.nextInt();
         sc.nextLine();
 
-        Optional<Task> task = businessLogic.getTaskById(id);
-        if (task.isPresent()) {
+        Optional<Task> foundTask = businessLogic.getTaskById(id);
+        if (foundTask.isPresent()) {
 
 
             System.out.print("Edit task title (if not, leave blank):");
             String title = sc.nextLine();
 
             System.out.print("Edit task status (true, false)  (if not, leave blank):");
-            boolean done = sc.nextBoolean();
+            String stringBoolean = sc.nextLine();
+
+            Boolean done = Boolean.parseBoolean(stringBoolean);
+            //Boolean done = sc.nextBoolean();
 
             System.out.println("Edit due date (format: YYYY-MM-DD) (if not, leave blank):");
             String dueDateString = sc.nextLine();
-            DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+
             Date dueDate = new Date();
-            try {
-                dueDate = formatter.parse(dueDateString);
-            } catch (ParseException e) {
-                e.printStackTrace();
+
+            if (sc.hasNextLine()) {
+
+                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    dueDate = formatter.parse(dueDateString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             System.out.println("Edit priority (LOW, MEDIUM, HIGH) (if not, leave blank):");
             String priorityString = sc.nextLine();
-
-            Priority priority = Priority.valueOf(priorityString);
-
+            Priority priority = null;
+            if (sc.hasNextLine()) {
+                priority = Priority.valueOf(priorityString);
+            }
             ///////////////////////BL/////////////////////
 
-            //businessLogic.addTask(id, title, false, dueDate, priority);
+            Task task = new Task(id, title, done, dueDate, priority);
+            businessLogic.updateTask(task);
 
             //////////////BL END//////////
 

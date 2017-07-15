@@ -15,7 +15,7 @@ public class Task {
         this.priority = Priority.LOW;
     }
 
-    public Task(String title, Boolean done, Priority priority, Date dueDate) {
+    public Task(Integer id, String title, Boolean done, Date dueDate, Priority priority) {
         this.title = title;
         this.done = done;
         this.priority = priority;
@@ -109,7 +109,7 @@ public class Task {
     @Override
     public String toString() {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         return "Task{" +
                 "id=" + id + "." +

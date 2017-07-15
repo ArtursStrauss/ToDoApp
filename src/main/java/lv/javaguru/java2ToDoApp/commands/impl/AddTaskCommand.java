@@ -35,7 +35,7 @@ public class AddTaskCommand implements Command {
 
         System.out.println("Enter due date (format: YYYY-MM-DD):");
         String dueDateString = sc.nextLine();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dueDate = new Date();
         try {
             dueDate = formatter.parse(dueDateString);
