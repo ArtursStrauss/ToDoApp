@@ -16,6 +16,7 @@ public class Task {
     }
 
     public Task(Integer id, String title, Boolean done, Date dueDate, Priority priority) {
+        this.id = id;
         this.title = title;
         this.done = done;
         this.priority = priority;

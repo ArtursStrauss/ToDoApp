@@ -61,7 +61,7 @@ public class EditTaskCommand implements Command {
             System.out.println("Edit priority (LOW, MEDIUM, HIGH) (if not, leave blank):");
             String priorityString = sc.nextLine();
             Priority priority = null;
-            if (sc.hasNextLine()) {
+            if (sc.hasNext()) {
                 priority = Priority.valueOf(priorityString);
             }
             ///////////////////////BL/////////////////////
