@@ -14,6 +14,7 @@ public class TaskDatabaseImpl implements TaskDatabase {
 
     @Override
     public void addTask(Task task) {
+
         this.tasks.add(task);
     }
 
