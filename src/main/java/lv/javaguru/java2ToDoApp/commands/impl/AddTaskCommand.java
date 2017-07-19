@@ -48,7 +48,6 @@ public class AddTaskCommand implements Command {
         Priority priority = Priority.valueOf(priorityString);
 
         ///////////////////////BL/////////////////////
-
         businessLogic.addTask(id, title, false, dueDate, priority);
 
         //////////////BL END//////////
