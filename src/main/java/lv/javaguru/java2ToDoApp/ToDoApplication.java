@@ -1,12 +1,13 @@
 package lv.javaguru.java2ToDoApp;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
-import lv.javaguru.java2ToDoApp.commands.api.Command;
-import lv.javaguru.java2ToDoApp.commands.impl.AddTaskCommand;
-import lv.javaguru.java2ToDoApp.commands.impl.EditTaskCommand;
-import lv.javaguru.java2ToDoApp.commands.impl.PrintTaskListCommand;
-import lv.javaguru.java2ToDoApp.commands.impl.RemoveTaskCommand;
+import lv.javaguru.java2ToDoApp.views.api.View;
+import lv.javaguru.java2ToDoApp.views.impl.AddTaskView;
+import lv.javaguru.java2ToDoApp.views.impl.EditTaskView;
+import lv.javaguru.java2ToDoApp.views.impl.PrintTaskListView;
+import lv.javaguru.java2ToDoApp.views.impl.RemoveTaskView;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.database.impl.TaskDatabaseImpl;
 
@@ -24,13 +25,14 @@ public class ToDoApplication {
         // 5. Exit
 
         TaskDatabase taskDatabase = new TaskDatabaseImpl();
-        BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase);
+        AddTaskValidator addTaskValidator = new AddTaskValidator(taskDatabase);
+        BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase, addTaskValidator);
 
-        Map<Integer, Command> commands = new HashMap<>();
-        commands.put(1, new AddTaskCommand(businessLogic));
-        commands.put(2, new RemoveTaskCommand(businessLogic));
-        commands.put(3, new EditTaskCommand(businessLogic));
-        commands.put(4, new PrintTaskListCommand(businessLogic));
+        Map<Integer, View> commands = new HashMap<>();
+        commands.put(1, new AddTaskView(businessLogic));
+        commands.put(2, new RemoveTaskView(businessLogic));
+        commands.put(3, new EditTaskView(businessLogic));
+        commands.put(4, new PrintTaskListView(businessLogic));
 
 
         while (true) {
@@ -39,8 +41,8 @@ public class ToDoApplication {
             if (menuItem == 5) {
                 break;
             } else {
-                Command command = commands.get(menuItem);
-                command.execute();
+                View view = commands.get(menuItem);
+                view.execute();
             }
         }
     }

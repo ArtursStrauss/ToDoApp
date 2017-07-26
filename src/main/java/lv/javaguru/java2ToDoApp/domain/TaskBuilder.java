@@ -1,5 +1,8 @@
 package lv.javaguru.java2ToDoApp.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TaskBuilder {
@@ -22,6 +25,19 @@ public class TaskBuilder {
                                   Boolean done,
                                   Date dueDate,
                                   Priority priority) {
+        return createTask()
+                .withId(id)
+                .withTitle(title)
+                .withDone(done)
+                .withDueDate(dueDate)
+                .withPriority(priority).build();
+    }
+
+    public static Task createTask(Integer id,
+                                  String title,
+                                  String done,
+                                  String dueDate,
+                                  String priority) {
         return createTask()
                 .withId(id)
                 .withTitle(title)
@@ -62,6 +78,31 @@ public class TaskBuilder {
 
     public TaskBuilder withPriority(Priority priority) {
         this.priority = priority;
+        return this;
+    }
+
+    public TaskBuilder withDone(String done) {
+        Boolean parsedDone = Boolean.parseBoolean(done);
+        this.done = parsedDone;
+        return this;
+    }
+
+    public TaskBuilder withDueDate(String dueDate) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsedDate = new Date();
+        try {
+            parsedDate = formatter.parse(dueDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.dueDate = parsedDate;
+        return this;
+    }
+
+    public TaskBuilder withPriority(String priority) {
+        Priority pardedPriority = Priority.valueOf(priority);
+        this.priority = pardedPriority;
         return this;
     }
 }

@@ -1,17 +1,17 @@
-package lv.javaguru.java2ToDoApp.commands.impl;
+package lv.javaguru.java2ToDoApp.views.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
-import lv.javaguru.java2ToDoApp.commands.api.Command;
+import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Task;
 
 import java.util.Optional;
 import java.util.Scanner;
 
-public class RemoveTaskCommand implements Command {
+public class RemoveTaskView implements View {
 
     private BusinessLogic businessLogic;
 
-    public RemoveTaskCommand(BusinessLogic businessLogic) {
+    public RemoveTaskView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
 

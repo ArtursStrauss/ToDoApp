@@ -1,7 +1,7 @@
-package lv.javaguru.java2ToDoApp.commands.impl;
+package lv.javaguru.java2ToDoApp.views.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
-import lv.javaguru.java2ToDoApp.commands.api.Command;
+import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import lv.javaguru.java2ToDoApp.domain.Task;
 
@@ -12,11 +12,11 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class EditTaskCommand implements Command {
+public class EditTaskView implements View {
 
     private BusinessLogic businessLogic;
 
-    public EditTaskCommand(BusinessLogic businessLogic) {
+    public EditTaskView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
 

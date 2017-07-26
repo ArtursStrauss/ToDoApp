@@ -1,18 +1,17 @@
 package lv.javaguru.java2ToDoApp.businesslogic.api;
 
-import lv.javaguru.java2ToDoApp.domain.Priority;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.domain.Task;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface BusinessLogic {
-    void addTask(Integer id,
-                    String title,
-                    Boolean done,
-                    Date dueDate,
-                    Priority priority);
+    Response addTask(Integer id,
+                     String title,
+                     String done,
+                     String dueDate,
+                     String priority);
 
     boolean removeTask(Task task);
 
