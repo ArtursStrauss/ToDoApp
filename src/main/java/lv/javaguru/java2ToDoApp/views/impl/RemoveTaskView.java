@@ -21,7 +21,7 @@ public class RemoveTaskView implements View {
         System.out.println();
         System.out.println("Remove task from list execution start!");
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter product id:");
+        System.out.print("Enter task id:");
         final Integer id = sc.nextInt();
 
         ///////////////////BL/////////////////////////
@@ -32,12 +32,12 @@ public class RemoveTaskView implements View {
         ////////////////////BL end /////////////////
 
         if (result) {
-            System.out.println("Product " + task.get().toString() + " was found and will be removed from list!");
+            System.out.println("Task " + task.get().toString() + " was found and will be removed from list!");
         } else {
-            System.out.println("Product with ID " + id + " not found and not be removed from list!");
+            System.out.println("Task with ID " + id + " not found and not be removed from list!");
         }
 
-        System.out.println("Remove product from list execution end!");
+        System.out.println("Remove task from list execution end!");
         System.out.println();
 
     }

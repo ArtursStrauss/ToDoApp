@@ -12,7 +12,9 @@ public interface TaskDatabase {
 
     Optional<Task> getTaskById(Integer id);
 
-    void updateTask(Task task);
+    Optional<Task> updateTask(Task task);
 
     List<Task> getAllTasks();
+
+    int getIndexByID(Integer id);
 }

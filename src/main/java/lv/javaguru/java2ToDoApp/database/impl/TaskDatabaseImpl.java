@@ -32,33 +32,24 @@ public class TaskDatabaseImpl implements TaskDatabase {
     }
 
     @Override
-    public void updateTask(Task task) {
+    public Optional<Task> updateTask(Task task) {
 
-        Optional<Task> foundTask = this.getTaskById(task.getId());
-
-        if (!task.titleNotNull()) {
-            task.setTitle(foundTask.get().getTitle());
-        }
-
-        if (!task.doneNotNull()) {
-            task.setDone(foundTask.get().isDone());
-        }
-
-        if (!task.dueDateNotNull()) {
-            task.setDueDate(foundTask.get().getDueDate());
-        }
-
-        if (!task.priorityNotNull()) {
-            task.setPriority(foundTask.get().getPriority());
-        }
-
-        int index = this.tasks.indexOf(foundTask.get());
+        int index = this.getIndexByID(task.getId());
         this.tasks.set(index, task);
+
+        return this.tasks.stream()
+                .filter(p -> p.getId().equals(task.getId()))
+                .findFirst();
     }
 
     @Override
     public List<Task> getAllTasks() {
 
         return Lists.newArrayList(this.tasks);
+    }
+
+    @Override
+    public int getIndexByID(Integer id) {
+        return this.tasks.indexOf(this.getTaskById(id).get());
     }
 }

@@ -1,0 +1,70 @@
+package lv.javaguru.java2ToDoApp.businesslogic.impl;
+
+import com.google.common.collect.Lists;
+import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+import lv.javaguru.java2ToDoApp.domain.Priority;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+public class UpdateTaskValidator {
+    private TaskDatabase taskDatabase;
+    private List<Error> errors = Lists.newArrayList();
+
+    public UpdateTaskValidator(TaskDatabase taskDatabase) {
+        this.taskDatabase = taskDatabase;
+    }
+
+    public UpdateTaskValidator validateTaskExists(Integer id) {
+        if (id == null) {
+            errors.add(new Error("id", "Must not be empty!"));
+        } else if (!taskExists(id)) {
+            errors.add(new Error("id", "Such task dose not exists!"));
+        }
+        return this;
+    }
+
+    private boolean taskExists(Integer id) {
+
+        return taskDatabase.getTaskById(id).isPresent();
+    }
+
+    public UpdateTaskValidator validateDone(String done) {
+        if (done != null && !(done.equalsIgnoreCase("true") || done.equalsIgnoreCase("false")) && !"".equals(done)) {
+            errors.add(new Error("done", "This is not a boolean value!"));
+        }
+        return this;
+    }
+
+    public UpdateTaskValidator validateDueDate(String dueDate) {
+        if (dueDate != null && validateDateFormat(dueDate) && !"".equals(dueDate)) {
+            errors.add(new Error("dueDate", "This is not valid date format (yyyy-MM-dd)!"));
+        }
+        return this;
+    }
+
+    private boolean validateDateFormat(String value) {
+        Date parsedDate = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            parsedDate = sdf.parse(value);
+            return false;
+        } catch (ParseException ex) {
+            return true;
+        }
+    }
+
+    public UpdateTaskValidator validatePriority(String priority) {
+        if (priority != null && !(Priority.contains(priority)) && !"".equals(priority)) {
+            errors.add(new Error("priority", "There is no such priority!"));
+        }
+        return this;
+    }
+
+    public List<Error> validate() {
+
+        return errors;
+    }
+}

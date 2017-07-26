@@ -17,7 +17,11 @@ public interface BusinessLogic {
 
     Optional<Task> getTaskById(Integer id);
 
-    void updateTask(Task task);
+    Response updateTask(Integer id,
+                              String title,
+                              String done,
+                              String dueDate,
+                              String priority);;
 
     List<Task> getAllTasks();
 }

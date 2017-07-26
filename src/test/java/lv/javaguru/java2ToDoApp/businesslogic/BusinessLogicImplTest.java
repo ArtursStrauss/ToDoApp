@@ -5,6 +5,7 @@ import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.UpdateTaskValidator;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import lv.javaguru.java2ToDoApp.domain.Task;
@@ -27,27 +28,24 @@ public class BusinessLogicImplTest {
 
     private TaskDatabase taskDao;
     private AddTaskValidator addTaskValidator;
+    private UpdateTaskValidator updateTaskValidator;
     private BusinessLogic service;
 
     @Before
     public void init() {
         taskDao = mock(TaskDatabase.class);
         addTaskValidator = mock(AddTaskValidator.class);
-        service = new BusinessLogicImpl(taskDao, addTaskValidator);
+        updateTaskValidator = mock(UpdateTaskValidator.class);
+        service = new BusinessLogicImpl(taskDao, addTaskValidator,updateTaskValidator);
     }
 
     @Test
     public void addNewTaskInList() {
 
-        //Date dueDate = dateParser("2017-09-09");
-        //Task task = new Task(1, "buy ofMilk", false, dueDate, Priority.LOW);
-
         doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1,"buy milk","false","2017-09-09","LOW");
-        // doReturn(Optional.of(task)).when(taskDao).getTaskById(1);
         Response result = service.addTask(1,"buy milk","false","2017-09-09","LOW");
 
         assertThat(result.isSuccess(), is(true));
-        //assertEquals(taskDao.getTaskById(1).get(), task);
         verify(taskDao).addTask(any(Task.class));
     }
 
@@ -65,6 +63,16 @@ public class BusinessLogicImplTest {
 
         assertThat(taskDao.getTaskById(1).isPresent(), is(false));
         verify(taskDao).removeTask(task);
+    }
+
+    @Test
+    public void editTaskInList(){
+
+        doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1,"buy milk","false","2017-09-09","LOW");
+        Response result = service.addTask(1,"buy milk","false","2017-09-09","LOW");
+
+        assertThat(result.isSuccess(), is(true));
+        verify(taskDao).addTask(any(Task.class));
     }
 
     private Date dateParser(String date) {

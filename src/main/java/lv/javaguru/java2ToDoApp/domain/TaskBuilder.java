@@ -101,8 +101,8 @@ public class TaskBuilder {
     }
 
     public TaskBuilder withPriority(String priority) {
-        Priority pardedPriority = Priority.valueOf(priority);
-        this.priority = pardedPriority;
+        Priority parsedPriority = Priority.valueOf(priority);
+        this.priority = parsedPriority;
         return this;
     }
 }

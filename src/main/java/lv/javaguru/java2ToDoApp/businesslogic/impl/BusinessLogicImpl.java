@@ -13,12 +13,15 @@ public class BusinessLogicImpl implements BusinessLogic {
 
     private TaskDatabase taskDao;
     private AddTaskValidator addTaskValidator;
+    private UpdateTaskValidator updateTaskValidator;
 
     public BusinessLogicImpl(TaskDatabase taskDao,
-                             AddTaskValidator addTaskValidator) {
+                             AddTaskValidator addTaskValidator,
+                             UpdateTaskValidator updateTaskValidator) {
 
         this.taskDao = taskDao;
         this.addTaskValidator = addTaskValidator;
+        this.updateTaskValidator = updateTaskValidator;
     }
 
     @Override
@@ -61,9 +64,38 @@ public class BusinessLogicImpl implements BusinessLogic {
     }
 
     @Override
-    public void updateTask(Task task) {
+    public Response updateTask(Integer id, String title, String done, String dueDate, String priority) {
+        List<Error> validationErrors = updateTaskValidator.validateTaskExists(id)
+                .validateDone(done)
+                .validateDueDate(dueDate)
+                .validatePriority(priority)
+                .validate();
 
-        taskDao.updateTask(task);
+        if (!validationErrors.isEmpty()) {
+            return Response.createFailResponse(validationErrors);
+        }
+
+        Optional<Task> task = this.getTaskById(id);
+
+        if (!title.isEmpty()) {
+            task.get().setTitle(title);
+        }
+
+        if (!done.isEmpty()) {
+            task.get().setDone(done);
+        }
+
+        if (!dueDate.isEmpty()) {
+            task.get().setDueDate(dueDate);
+        }
+
+        if (!priority.isEmpty()) {
+            task.get().setPriority(priority);
+        }
+
+        taskDao.updateTask(task.get());
+
+        return Response.createSuccessResponse();
     }
 
     @Override

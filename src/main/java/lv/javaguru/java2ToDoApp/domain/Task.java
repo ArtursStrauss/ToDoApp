@@ -1,9 +1,13 @@
 package lv.javaguru.java2ToDoApp.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Task {
+
+    private static final String dateFormat = "yyyy-MM-dd";
 
     private Integer id;
     private String title;
@@ -24,43 +28,75 @@ public class Task {
     }
 
     public Integer getId() {
+
         return id;
     }
 
     public void setId(Integer id) {
+
         this.id = id;
     }
 
     public String getTitle() {
+
         return title;
     }
 
     public void setTitle(String title) {
+
         this.title = title;
     }
 
     public boolean isDone() {
+
         return done;
     }
 
     public void setDone(Boolean done) {
+
         this.done = done;
     }
 
+    public void setDone(String done) {
+        Boolean parsedDone = Boolean.parseBoolean(done);
+        this.done = parsedDone;
+    }
+
     public Date getDueDate() {
+
         return dueDate;
     }
 
     public void setDueDate(Date dueDate) {
+
         this.dueDate = dueDate;
     }
 
+    public void setDueDate(String dueDate) {
+
+        DateFormat formatter = new SimpleDateFormat(this.dateFormat);
+        Date parsedDate = new Date();
+        try {
+            parsedDate = formatter.parse(dueDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.dueDate = parsedDate;
+    }
+
     public Priority getPriority() {
+
         return priority;
     }
 
     public void setPriority(Priority priority) {
+
         this.priority = priority;
+    }
+    public void setPriority(String priority){
+        Priority parsedPriority = Priority.valueOf(priority);
+        this.priority = parsedPriority;
     }
 
     public boolean idNotNull() {

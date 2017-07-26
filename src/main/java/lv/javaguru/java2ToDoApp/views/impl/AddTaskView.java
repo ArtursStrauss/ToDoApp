@@ -44,7 +44,6 @@ public class AddTaskView implements View {
         //////////////BL END//////////
 
         if (response.isFail()) {
-            // TODO print List<Error>
             for(Error error: response.getErrors()){
                 System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
             }

@@ -14,6 +14,7 @@ public class AddTaskValidator {
     private TaskDatabase taskDatabase;
 
     public AddTaskValidator(TaskDatabase taskDatabase) {
+
         this.taskDatabase = taskDatabase;
     }
 
@@ -27,6 +28,11 @@ public class AddTaskValidator {
         }
     }
 
+    private boolean idAlreadyExist(Integer id) {
+
+        return taskDatabase.getTaskById(id).isPresent();
+    }
+
     private Optional<Error> validateTitle(String title) {
         if (title == null || "".equals(title)) {
             return Optional.of(new Error("title", "Must not be empty!"));
@@ -35,15 +41,11 @@ public class AddTaskValidator {
         }
     }
 
-    private boolean idAlreadyExist(Integer id) {
-
-        return taskDatabase.getTaskById(id).isPresent();
-    }
 
     private Optional<Error> validateDone(String done) {
         if (done == null || "".equals(done)) {
             return Optional.of(new Error("done", "Must not be empty!"));
-        } else if (!Boolean.parseBoolean(done)) {
+        } else if (!(done.equalsIgnoreCase("true") || done.equalsIgnoreCase("false"))) {
             return Optional.of(new Error("done", "This is not a boolean value!"));
         } else {
             return Optional.empty();
