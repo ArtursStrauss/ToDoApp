@@ -1,16 +1,19 @@
 package lv.javaguru.java2ToDoApp;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.UpdateTaskValidator;
+// import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+// import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
+// import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
+// import lv.javaguru.java2ToDoApp.businesslogic.impl.UpdateTaskValidator;
+import lv.javaguru.java2ToDoApp.config.SpringAppConfig;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.views.impl.AddTaskView;
 import lv.javaguru.java2ToDoApp.views.impl.EditTaskView;
 import lv.javaguru.java2ToDoApp.views.impl.PrintTaskListView;
 import lv.javaguru.java2ToDoApp.views.impl.RemoveTaskView;
-import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
-import lv.javaguru.java2ToDoApp.database.impl.TaskDatabaseImpl;
+// import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+// import lv.javaguru.java2ToDoApp.database.impl.TaskDatabaseImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +21,7 @@ import java.util.Scanner;
 
 public class ToDoApplication {
     public static void main(String[] args) {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringAppConfig.class);
         // Use cases:
         // 1. Add task to list
         // 2. Remove task from list
@@ -25,16 +29,16 @@ public class ToDoApplication {
         // 4. Print task list to console
         // 5. Exit
 
-        TaskDatabase taskDatabase = new TaskDatabaseImpl();
-        AddTaskValidator addTaskValidator = new AddTaskValidator(taskDatabase);
-        UpdateTaskValidator updateTaskValidator = new UpdateTaskValidator(taskDatabase);
-        BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase, addTaskValidator, updateTaskValidator);
+        //TaskDatabase taskDatabase = new TaskDatabaseImpl();
+        //AddTaskValidator addTaskValidator = new AddTaskValidator(taskDatabase);
+        //UpdateTaskValidator updateTaskValidator = new UpdateTaskValidator(taskDatabase);
+        //BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase, addTaskValidator, updateTaskValidator);
 
         Map<Integer, View> commands = new HashMap<>();
-        commands.put(1, new AddTaskView(businessLogic));
-        commands.put(2, new RemoveTaskView(businessLogic));
-        commands.put(3, new EditTaskView(businessLogic));
-        commands.put(4, new PrintTaskListView(businessLogic));
+        commands.put(1, applicationContext.getBean(AddTaskView.class));
+        commands.put(2, applicationContext.getBean(RemoveTaskView.class));
+        commands.put(3, applicationContext.getBean(EditTaskView.class));
+        commands.put(4, applicationContext.getBean(PrintTaskListView.class));
 
 
         while (true) {

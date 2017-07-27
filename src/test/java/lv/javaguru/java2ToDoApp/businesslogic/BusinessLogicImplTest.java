@@ -36,14 +36,14 @@ public class BusinessLogicImplTest {
         taskDao = mock(TaskDatabase.class);
         addTaskValidator = mock(AddTaskValidator.class);
         updateTaskValidator = mock(UpdateTaskValidator.class);
-        service = new BusinessLogicImpl(taskDao, addTaskValidator,updateTaskValidator);
+        service = new BusinessLogicImpl(taskDao, addTaskValidator, updateTaskValidator);
     }
 
     @Test
     public void addNewTaskInList() {
 
-        doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1,"buy milk","false","2017-09-09","LOW");
-        Response result = service.addTask(1,"buy milk","false","2017-09-09","LOW");
+        doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1, "buy milk", "false", "2017-09-09", "LOW");
+        Response result = service.addTask(1, "buy milk", "false", "2017-09-09", "LOW");
 
         assertThat(result.isSuccess(), is(true));
         verify(taskDao).addTask(any(Task.class));
@@ -58,7 +58,7 @@ public class BusinessLogicImplTest {
         doReturn(Optional.empty()).when(taskDao).getTaskById(1);
         doReturn(null).when(taskDao).removeTask(task);
 
-        service.addTask(1,"buy milk","false","2017-09-09","LOW");
+        service.addTask(1, "buy milk", "false", "2017-09-09", "LOW");
         service.removeTask(task);
 
         assertThat(taskDao.getTaskById(1).isPresent(), is(false));
@@ -66,13 +66,15 @@ public class BusinessLogicImplTest {
     }
 
     @Test
-    public void editTaskInList(){
+    public void editTaskInList() {
 
-        doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1,"buy milk","false","2017-09-09","LOW");
-        Response result = service.addTask(1,"buy milk","false","2017-09-09","LOW");
+        doReturn(Lists.newArrayList()).when(addTaskValidator).validate(1, "buy milk", "false", "2017-09-09", "LOW");
+        Response result = service.addTask(1, "buy milk", "false", "2017-09-09", "LOW");
+
+        result = service.updateTask(1, "buy desa", null, null, null);
 
         assertThat(result.isSuccess(), is(true));
-        verify(taskDao).addTask(any(Task.class));
+        verify(taskDao).updateTask(any(Task.class));
     }
 
     private Date dateParser(String date) {

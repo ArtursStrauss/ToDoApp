@@ -4,21 +4,19 @@ import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
-import lv.javaguru.java2ToDoApp.domain.Priority;
-import lv.javaguru.java2ToDoApp.domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class EditTaskView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public EditTaskView(BusinessLogic businessLogic) {
+
         this.businessLogic = businessLogic;
     }
 
@@ -59,55 +57,5 @@ public class EditTaskView implements View {
 
         System.out.println("Update task in list! Execution end!");
         System.out.println();
-
-        /**Optional<Task> foundTask = businessLogic.getTaskById(id);
-         if (foundTask.isPresent()) {
-
-
-
-         if (!title.isEmpty()) {
-         foundTask.get().setTitle(title);
-         }
-
-
-
-         if (!stringBoolean.isEmpty()) {
-
-         Boolean done = Boolean.parseBoolean(stringBoolean);
-         foundTask.get().setDone(done);
-         }
-
-
-
-         if (!dueDateString.isEmpty()) {
-
-         Date dueDate = new Date();
-         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-         try {
-         dueDate = formatter.parse(dueDateString);
-         } catch (ParseException e) {
-         e.printStackTrace();
-         }
-         foundTask.get().setDueDate(dueDate);
-         }
-
-
-
-         if (!dueDateString.isEmpty()) {
-         Priority priority = Priority.valueOf(priorityString);
-         foundTask.get().setPriority(priority);
-         }
-
-         ///////////////////////BL/////////////////////
-
-         businessLogic.updateTask(foundTask.get());
-
-         ///////////////////////BL END/////////////////
-
-         System.out.println("Add task to list! Execution end!");
-         System.out.println();
-         } else {
-         System.out.println("There is no task with such id: " + id);
-         }*/
     }
 }

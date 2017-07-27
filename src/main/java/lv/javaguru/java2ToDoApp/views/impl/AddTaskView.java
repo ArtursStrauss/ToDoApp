@@ -5,14 +5,18 @@ import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.Scanner;
 
+@Component
 public class AddTaskView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public AddTaskView(BusinessLogic businessLogic) {
 
         this.businessLogic = businessLogic;

@@ -3,16 +3,21 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl;
 import com.google.common.collect.Lists;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Priority;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class UpdateTaskValidator {
+
     private TaskDatabase taskDatabase;
     private List<Error> errors = Lists.newArrayList();
 
+    @Autowired
     public UpdateTaskValidator(TaskDatabase taskDatabase) {
         this.taskDatabase = taskDatabase;
     }

@@ -3,18 +3,22 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl;
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
 import static lv.javaguru.java2ToDoApp.domain.TaskBuilder.createTask;
 
+@Component
 public class BusinessLogicImpl implements BusinessLogic {
 
     private TaskDatabase taskDao;
     private AddTaskValidator addTaskValidator;
     private UpdateTaskValidator updateTaskValidator;
 
+    @Autowired
     public BusinessLogicImpl(TaskDatabase taskDao,
                              AddTaskValidator addTaskValidator,
                              UpdateTaskValidator updateTaskValidator) {

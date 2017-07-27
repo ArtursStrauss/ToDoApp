@@ -2,12 +2,15 @@ package lv.javaguru.java2ToDoApp.database.impl;
 
 import com.google.common.collect.Lists;
 
+
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class TaskDatabaseImpl implements TaskDatabase {
 
     private List<Task> tasks = Lists.newArrayList();

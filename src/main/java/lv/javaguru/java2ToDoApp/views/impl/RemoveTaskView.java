@@ -3,15 +3,20 @@ package lv.javaguru.java2ToDoApp.views.impl;
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class RemoveTaskView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public RemoveTaskView(BusinessLogic businessLogic) {
+
         this.businessLogic = businessLogic;
     }
 
