@@ -19,6 +19,7 @@ public class UpdateTaskValidator {
 
     @Autowired
     public UpdateTaskValidator(TaskDatabase taskDatabase) {
+
         this.taskDatabase = taskDatabase;
     }
 

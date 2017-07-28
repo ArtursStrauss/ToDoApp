@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TaskBuilder {
+
+    private static final String dateFormat = "yyyy-MM-dd";
+
     private Integer id;
     private String title;
     private Boolean done;
@@ -82,13 +85,12 @@ public class TaskBuilder {
     }
 
     public TaskBuilder withDone(String done) {
-        Boolean parsedDone = Boolean.parseBoolean(done);
-        this.done = parsedDone;
+        this.done = Boolean.parseBoolean(done);
         return this;
     }
 
     public TaskBuilder withDueDate(String dueDate) {
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat formatter = new SimpleDateFormat(dateFormat);
         Date parsedDate = new Date();
         try {
             parsedDate = formatter.parse(dueDate);
@@ -101,8 +103,7 @@ public class TaskBuilder {
     }
 
     public TaskBuilder withPriority(String priority) {
-        Priority parsedPriority = Priority.valueOf(priority);
-        this.priority = parsedPriority;
+        this.priority = Priority.valueOf(priority);
         return this;
     }
 }

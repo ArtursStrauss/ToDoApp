@@ -3,6 +3,7 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl;
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import lv.javaguru.java2ToDoApp.domain.TaskUpdater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,15 +18,18 @@ public class BusinessLogicImpl implements BusinessLogic {
     private TaskDatabase taskDao;
     private AddTaskValidator addTaskValidator;
     private UpdateTaskValidator updateTaskValidator;
+    private TaskUpdater taskUpdater;
 
     @Autowired
     public BusinessLogicImpl(TaskDatabase taskDao,
                              AddTaskValidator addTaskValidator,
-                             UpdateTaskValidator updateTaskValidator) {
+                             UpdateTaskValidator updateTaskValidator,
+                             TaskUpdater taskUpdater) {
 
         this.taskDao = taskDao;
         this.addTaskValidator = addTaskValidator;
         this.updateTaskValidator = updateTaskValidator;
+        this.taskUpdater = taskUpdater;
     }
 
     @Override
@@ -79,25 +83,14 @@ public class BusinessLogicImpl implements BusinessLogic {
             return Response.createFailResponse(validationErrors);
         }
 
-        Optional<Task> task = this.getTaskById(id);
+        Task task = taskUpdater.getTask(id)
+                .updateTitle(title)
+                .updateDone(done)
+                .updateDueDate(dueDate)
+                .updatePriority(priority)
+                .update();
 
-        if (!title.isEmpty()) {
-            task.get().setTitle(title);
-        }
-
-        if (!done.isEmpty()) {
-            task.get().setDone(done);
-        }
-
-        if (!dueDate.isEmpty()) {
-            task.get().setDueDate(dueDate);
-        }
-
-        if (!priority.isEmpty()) {
-            task.get().setPriority(priority);
-        }
-
-        taskDao.updateTask(task.get());
+        taskDao.updateTask(task);
 
         return Response.createSuccessResponse();
     }

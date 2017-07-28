@@ -9,6 +9,7 @@ import lv.javaguru.java2ToDoApp.businesslogic.impl.UpdateTaskValidator;
 import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import lv.javaguru.java2ToDoApp.domain.TaskUpdater;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,6 +30,7 @@ public class BusinessLogicImplTest {
     private TaskDatabase taskDao;
     private AddTaskValidator addTaskValidator;
     private UpdateTaskValidator updateTaskValidator;
+    private TaskUpdater taskUpdater;
     private BusinessLogic service;
 
     @Before
@@ -36,7 +38,9 @@ public class BusinessLogicImplTest {
         taskDao = mock(TaskDatabase.class);
         addTaskValidator = mock(AddTaskValidator.class);
         updateTaskValidator = mock(UpdateTaskValidator.class);
-        service = new BusinessLogicImpl(taskDao, addTaskValidator, updateTaskValidator);
+        taskUpdater = mock(TaskUpdater.class);
+
+        service = new BusinessLogicImpl(taskDao, addTaskValidator, updateTaskValidator, taskUpdater);
     }
 
     @Test
