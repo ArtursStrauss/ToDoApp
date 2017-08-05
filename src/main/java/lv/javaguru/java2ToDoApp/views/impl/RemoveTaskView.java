@@ -1,6 +1,7 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+import lv.javaguru.java2ToDoApp.businesslogic.api.GetTaskByIdService;
+import lv.javaguru.java2ToDoApp.businesslogic.api.RemoveTaskService;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,10 @@ import java.util.Scanner;
 @Component
 public class RemoveTaskView implements View {
 
-    private BusinessLogic businessLogic;
-
     @Autowired
-    public RemoveTaskView(BusinessLogic businessLogic) {
-
-        this.businessLogic = businessLogic;
-    }
+    private RemoveTaskService removeTaskService;
+    @Autowired
+    private GetTaskByIdService getTaskByIdService;
 
     @Override
     public void execute() {
@@ -30,9 +28,9 @@ public class RemoveTaskView implements View {
         final Integer id = sc.nextInt();
 
         ///////////////////BL/////////////////////////
-        Optional<Task> task = businessLogic.getTaskById(id);
+        Optional<Task> task = getTaskByIdService.getTaskById(id);
 
-        boolean result = businessLogic.removeTask(task.get());
+        boolean result = removeTaskService.removeTask(task.get());
 
         ////////////////////BL end /////////////////
 

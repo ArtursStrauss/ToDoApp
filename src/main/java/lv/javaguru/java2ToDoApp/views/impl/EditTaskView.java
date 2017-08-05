@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+import lv.javaguru.java2ToDoApp.businesslogic.api.UpdateTaskService;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
@@ -12,13 +12,8 @@ import java.util.Scanner;
 @Component
 public class EditTaskView implements View {
 
-    private BusinessLogic businessLogic;
-
     @Autowired
-    public EditTaskView(BusinessLogic businessLogic) {
-
-        this.businessLogic = businessLogic;
-    }
+    private UpdateTaskService updateTaskService;
 
     @Override
     public void execute() {
@@ -33,7 +28,7 @@ public class EditTaskView implements View {
         System.out.print("Edit task title (if not, leave blank):");
         String title = sc.nextLine();
 
-        System.out.print("Edit task done status (true, false)  (if not, leave blank):");
+        System.out.print("Edit task status (true, false)  (if not, leave blank):");
         String stringBoolean = sc.nextLine();
 
         System.out.println("Edit due date (format: YYYY-MM-DD) (if not, leave blank):");
@@ -44,7 +39,7 @@ public class EditTaskView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = businessLogic.updateTask(id, title, stringBoolean, dueDateString, priorityString);
+        Response response = updateTaskService.updateTask(id, title, stringBoolean, dueDateString, priorityString);
 
         ///////////////////////BL END/////////////////
 

@@ -8,13 +8,10 @@ import org.springframework.stereotype.Component;
 public class TaskUpdater {
 
     private Task task;
+    @Autowired
     private TaskDAO taskDAO;
 
     @Autowired
-    public TaskUpdater(TaskDAO taskDAO) {
-
-        this.taskDAO = taskDAO;
-    }
 
     public TaskUpdater getTask(Integer id) {
         this.task = taskDAO.getById(id).get();
@@ -49,7 +46,7 @@ public class TaskUpdater {
         return this;
     }
 
-    public Task update(){
+    public Task update() {
 
         return this.task;
     }

@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
+import lv.javaguru.java2ToDoApp.businesslogic.api.AddTaskService;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
@@ -14,13 +14,8 @@ import java.util.Scanner;
 @Component
 public class AddTaskView implements View {
 
-    private BusinessLogic businessLogic;
-
     @Autowired
-    public AddTaskView(BusinessLogic businessLogic) {
-
-        this.businessLogic = businessLogic;
-    }
+    private AddTaskService addTaskService;
 
     @Override
     public void execute() {
@@ -40,12 +35,12 @@ public class AddTaskView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = businessLogic.addTask(title, "false", dueDate, priority);
+        Response response = addTaskService.addTask(title, "false", dueDate, priority);
 
         //////////////BL END//////////
 
         if (response.isFail()) {
-            for(Error error: response.getErrors()){
+            for (Error error : response.getErrors()) {
                 System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
             }
             System.out.println("Can not addTask this task!");
