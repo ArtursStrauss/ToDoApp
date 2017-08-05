@@ -33,7 +33,7 @@ public class EditTaskView implements View {
         System.out.print("Edit task title (if not, leave blank):");
         String title = sc.nextLine();
 
-        System.out.print("Edit task status (true, false)  (if not, leave blank):");
+        System.out.print("Edit task done status (true, false)  (if not, leave blank):");
         String stringBoolean = sc.nextLine();
 
         System.out.println("Edit due date (format: YYYY-MM-DD) (if not, leave blank):");

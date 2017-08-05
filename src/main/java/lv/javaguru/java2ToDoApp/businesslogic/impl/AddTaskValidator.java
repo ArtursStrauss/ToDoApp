@@ -22,21 +22,6 @@ public class AddTaskValidator {
         this.taskDatabase = taskDatabase;
     }
 
-    private Optional<Error> validateID(Integer id) {
-        if (id == null) {
-            return Optional.of(new Error("id", "Must not be empty!"));
-        } else if (idAlreadyExist(id)) {
-            return Optional.of(new Error("id", "Already exist!"));
-        } else {
-            return Optional.empty();
-        }
-    }
-
-    private boolean idAlreadyExist(Integer id) {
-
-        return taskDatabase.getTaskById(id).isPresent();
-    }
-
     private Optional<Error> validateTitle(String title) {
         if (title == null || "".equals(title)) {
             return Optional.of(new Error("title", "Must not be empty!"));
@@ -87,9 +72,8 @@ public class AddTaskValidator {
         }
     }
 
-    public List<Error> validate(Integer id, String title, String done, String dueDate, String priority) {
+    public List<Error> validate(String title, String done, String dueDate, String priority) {
         List<Error> errors = Lists.newArrayList();
-        validateID(id).ifPresent(e -> errors.add(e));
         validateTitle(title).ifPresent(e -> errors.add(e));
         validateDone(done).ifPresent(e -> errors.add(e));
         validateDueDate(dueDate).ifPresent(e -> errors.add(e));

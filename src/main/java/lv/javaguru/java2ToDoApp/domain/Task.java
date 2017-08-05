@@ -53,11 +53,12 @@ public class Task {
     }
 
     public void setDone(Boolean done) {
-
+        //System.out.println(done);
         this.done = done;
     }
 
     public void setDone(String done) {
+        //System.out.println(done);
         Boolean parsedDone = Boolean.parseBoolean(done);
         this.done = parsedDone;
     }

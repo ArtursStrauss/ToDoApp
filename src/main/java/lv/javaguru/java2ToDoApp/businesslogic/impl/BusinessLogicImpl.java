@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
-import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskUpdater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,50 +15,41 @@ import static lv.javaguru.java2ToDoApp.domain.TaskBuilder.createTask;
 @Component
 public class BusinessLogicImpl implements BusinessLogic {
 
-    private TaskDatabase taskDao;
+    @Autowired
+    private TaskDAO taskDao;
+    @Autowired
     private AddTaskValidator addTaskValidator;
+    @Autowired
     private UpdateTaskValidator updateTaskValidator;
+    @Autowired
     private TaskUpdater taskUpdater;
 
-    @Autowired
-    public BusinessLogicImpl(TaskDatabase taskDao,
-                             AddTaskValidator addTaskValidator,
-                             UpdateTaskValidator updateTaskValidator,
-                             TaskUpdater taskUpdater) {
-
-        this.taskDao = taskDao;
-        this.addTaskValidator = addTaskValidator;
-        this.updateTaskValidator = updateTaskValidator;
-        this.taskUpdater = taskUpdater;
-    }
-
     @Override
-    public Response addTask(Integer id, String title, String done, String dueDate, String priority) {
+    public Response addTask(String title, String done, String dueDate, String priority) {
 
-        List<Error> validationErrors = addTaskValidator.validate(id, title, done, dueDate, priority);
+        List<Error> validationErrors = addTaskValidator.validate(title, done, dueDate, priority);
         if (!validationErrors.isEmpty()) {
             return Response.createFailResponse(validationErrors);
         }
 
         Task task = createTask()
-                .withId(id)
                 .withTitle(title)
                 .withDone(done)
                 .withDueDate(dueDate)
                 .withPriority(priority)
                 .build();
 
-        taskDao.addTask(task);
+        taskDao.save(task);
 
         return Response.createSuccessResponse();
     }
 
     @Override
     public boolean removeTask(Task task) {
-        Optional<Task> foundTask = taskDao.getTaskById(task.getId());
+        Optional<Task> foundTask = taskDao.getById(task.getId());
         if (foundTask.isPresent()) {
 
-            taskDao.removeTask(foundTask.get());
+            taskDao.delete(foundTask.get());
             return true;
         } else {
             return false;
@@ -68,7 +59,7 @@ public class BusinessLogicImpl implements BusinessLogic {
     @Override
     public Optional<Task> getTaskById(Integer id) {
 
-        return taskDao.getTaskById(id);
+        return taskDao.getById(id);
     }
 
     @Override
@@ -90,7 +81,7 @@ public class BusinessLogicImpl implements BusinessLogic {
                 .updatePriority(priority)
                 .update();
 
-        taskDao.updateTask(task);
+        taskDao.update(task);
 
         return Response.createSuccessResponse();
     }
@@ -98,6 +89,6 @@ public class BusinessLogicImpl implements BusinessLogic {
     @Override
     public List<Task> getAllTasks() {
 
-        return taskDao.getAllTasks();
+        return taskDao.getAll();
     }
 }

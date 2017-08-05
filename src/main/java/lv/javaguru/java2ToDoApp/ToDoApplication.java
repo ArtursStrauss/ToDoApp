@@ -1,17 +1,11 @@
 package lv.javaguru.java2ToDoApp;
 
-// import lv.javaguru.java2ToDoApp.businesslogic.api.BusinessLogic;
-// import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
-// import lv.javaguru.java2ToDoApp.businesslogic.impl.BusinessLogicImpl;
-// import lv.javaguru.java2ToDoApp.businesslogic.impl.UpdateTaskValidator;
 import lv.javaguru.java2ToDoApp.config.SpringAppConfig;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.views.impl.AddTaskView;
 import lv.javaguru.java2ToDoApp.views.impl.EditTaskView;
 import lv.javaguru.java2ToDoApp.views.impl.PrintTaskListView;
 import lv.javaguru.java2ToDoApp.views.impl.RemoveTaskView;
-// import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
-// import lv.javaguru.java2ToDoApp.database.impl.TaskDatabaseImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

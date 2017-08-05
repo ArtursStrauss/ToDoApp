@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BusinessLogic {
-    Response addTask(Integer id,
-                     String title,
+    Response addTask(String title,
                      String done,
                      String dueDate,
                      String priority);

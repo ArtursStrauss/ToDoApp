@@ -29,9 +29,6 @@ public class AddTaskView implements View {
         System.out.println("Add task to list execution start!");
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter task ID (integer):");
-        Integer id = sc.nextInt();
-        sc.nextLine();
         System.out.print("Enter task:");
         String title = sc.nextLine();
 
@@ -43,7 +40,7 @@ public class AddTaskView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = businessLogic.addTask(id, title, "false", dueDate, priority);
+        Response response = businessLogic.addTask(title, "false", dueDate, priority);
 
         //////////////BL END//////////
 

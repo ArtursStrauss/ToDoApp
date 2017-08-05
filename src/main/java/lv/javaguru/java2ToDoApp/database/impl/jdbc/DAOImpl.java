@@ -1,6 +1,7 @@
 package lv.javaguru.java2ToDoApp.database.impl.jdbc;
 
 import lv.javaguru.java2ToDoApp.database.impl.DBException;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,15 +11,22 @@ import java.util.Properties;
 
 public class DAOImpl {
 
-    private static final String DB_CONFIG_FILE = "database.properties";
+    //private static final String DB_CONFIG_FILE = "database.properties";
 
-    protected String jdbcUrl = null;
-    protected String driverClass = null;
-    protected String userName = null;
-    protected String password = null;
+    @Value("${jdbc.url}")
+    protected String jdbcUrl;
+
+    @Value("${driverClass}")
+    protected String driverClass;
+
+    @Value("${database.user.name}")
+    protected String userName;
+
+    @Value("${database.user.password}")
+    protected String password;
 
     public DAOImpl() {
-        initDatabaseConnectionProperties();
+        //initDatabaseConnectionProperties();
         //registerJDBCDriver();
     }
 
@@ -31,7 +39,7 @@ public class DAOImpl {
         }
     }
 
-    private void initDatabaseConnectionProperties() {
+    /**private void initDatabaseConnectionProperties() {
         Properties properties = new Properties();
         try {
 
@@ -46,7 +54,7 @@ public class DAOImpl {
             System.out.println("Exception while reading JDBC configuration from file = " + DB_CONFIG_FILE);
             e.printStackTrace();
         }
-    }
+    }*/
 
     protected Connection getConnection() throws DBException {
         try {

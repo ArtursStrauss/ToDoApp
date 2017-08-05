@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.domain;
 
-import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
 public class TaskUpdater {
 
     private Task task;
-    private TaskDatabase taskDatabase;
+    private TaskDAO taskDAO;
 
     @Autowired
-    public TaskUpdater(TaskDatabase taskDatabase) {
+    public TaskUpdater(TaskDAO taskDAO) {
 
-        this.taskDatabase = taskDatabase;
+        this.taskDAO = taskDAO;
     }
 
     public TaskUpdater getTask(Integer id) {
-        this.task = taskDatabase.getTaskById(id).get();
+        this.task = taskDAO.getById(id).get();
         return this;
     }
 
@@ -50,6 +50,7 @@ public class TaskUpdater {
     }
 
     public Task update(){
+
         return this.task;
     }
 }

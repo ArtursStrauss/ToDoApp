@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
 import com.google.common.collect.Lists;
-import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
+import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,14 +14,11 @@ import java.util.List;
 @Component
 public class UpdateTaskValidator {
 
-    private TaskDatabase taskDatabase;
+    @Autowired
+    private TaskDAO taskDAO;
+
     private List<Error> errors = Lists.newArrayList();
 
-    @Autowired
-    public UpdateTaskValidator(TaskDatabase taskDatabase) {
-
-        this.taskDatabase = taskDatabase;
-    }
 
     public UpdateTaskValidator validateTaskExists(Integer id) {
         if (id == null) {
@@ -34,7 +31,7 @@ public class UpdateTaskValidator {
 
     private boolean taskExists(Integer id) {
 
-        return taskDatabase.getTaskById(id).isPresent();
+        return taskDAO.getById(id).isPresent();
     }
 
     public UpdateTaskValidator validateDone(String done) {
