@@ -23,6 +23,7 @@ public class TaskDAOImpl implements TaskDAO {
     private final String DELETE_QUERY = "delete from tasks where id = ?";
     private final String ALL_QUERY = "SELECT * FROM tasks";
     private final String BY_ID_QUERY = "SELECT * FROM tasks WHERE id = ?";
+    private final String BY_TITLE_QUERY = "SELECT * FROM tasks WHERE title = ?";
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcInsert insertTask;
@@ -56,6 +57,21 @@ public class TaskDAOImpl implements TaskDAO {
         //SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id",1);
 
         List<Task> tasks = jdbcTemplate.query(this.BY_ID_QUERY, new Object[]{id}, new TaskRowMapper());
+        if (tasks.isEmpty()) {
+            return Optional.empty();
+        } else {
+            if (tasks.size() == 1) {
+                return Optional.ofNullable(tasks.get(0));
+            } else {
+                throw new IllegalStateException("More then one row returned!");
+            }
+        }
+    }
+
+    @Override
+    public Optional<Task> getByTitle(String title) throws DBException {
+
+        List<Task> tasks = jdbcTemplate.query(this.BY_TITLE_QUERY, new Object[]{title}, new TaskRowMapper());
         if (tasks.isEmpty()) {
             return Optional.empty();
         } else {

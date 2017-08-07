@@ -58,6 +58,19 @@ public class TaskDAOImplTest {
     }
 
     @Test
+    public void testGetByTitle() throws Exception {
+        Task task = create("Clean room","false","2017-09-09","LOW");
+
+        Optional<Task> taskFromDB = taskDAO.getByTitle(task.getTitle());
+
+        assertThat(taskFromDB.isPresent(), is(true));
+        assertEquals(task.getId(), taskFromDB.get().getId());
+        assertEquals(task.getTitle(), taskFromDB.get().getTitle());
+        assertEquals(task.getDueDate(), taskFromDB.get().getDueDate());
+        assertEquals(task.getPriority(), taskFromDB.get().getPriority());
+    }
+
+    @Test
     public void testDelete() throws Exception {
 
         Task task = create("Clean room","false","2017-09-09","LOW");
