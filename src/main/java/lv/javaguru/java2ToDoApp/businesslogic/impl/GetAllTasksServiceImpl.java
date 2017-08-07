@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-class GetAllTasksServiceImpl implements GetAllTasksService {
+public class GetAllTasksServiceImpl implements GetAllTasksService {
 
     @Autowired
     private TaskDAO taskDAO;
 
     @Override
     public List<Task> getAllTasks() {
+
         return taskDAO.getAll();
     }
 }

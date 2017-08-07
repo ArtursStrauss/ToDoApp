@@ -1,9 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
 import com.google.common.collect.Lists;
-import lv.javaguru.java2ToDoApp.database.api.TaskDatabase;
 import lv.javaguru.java2ToDoApp.domain.Priority;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
@@ -14,13 +12,6 @@ import java.util.Optional;
 
 @Component
 public class AddTaskValidator {
-    private TaskDatabase taskDatabase;
-
-    @Autowired
-    public AddTaskValidator(TaskDatabase taskDatabase) {
-
-        this.taskDatabase = taskDatabase;
-    }
 
     private Optional<Error> validateTitle(String title) {
         if (title == null || "".equals(title)) {
@@ -29,7 +20,6 @@ public class AddTaskValidator {
             return Optional.empty();
         }
     }
-
 
     private Optional<Error> validateDone(String done) {
         if (done == null || "".equals(done)) {

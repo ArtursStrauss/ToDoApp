@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-class GetTaskByIdServiceImpl implements GetTaskByIdService {
+public class GetTaskByIdServiceImpl implements GetTaskByIdService {
 
     @Autowired
     private TaskDAO taskDAO;
 
     @Override
     public Optional<Task> getTaskById(Integer id) {
+
         return taskDAO.getById(id);
     }
 }
