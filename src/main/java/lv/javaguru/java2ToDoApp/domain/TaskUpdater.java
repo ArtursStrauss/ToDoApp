@@ -11,8 +11,6 @@ public class TaskUpdater {
     @Autowired
     private TaskDAO taskDAO;
 
-    @Autowired
-
     public TaskUpdater getTask(Integer id) {
         this.task = taskDAO.getById(id).get();
         return this;
