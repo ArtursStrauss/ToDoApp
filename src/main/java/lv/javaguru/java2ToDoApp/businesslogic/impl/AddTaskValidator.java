@@ -53,13 +53,16 @@ public class AddTaskValidator {
 
     private boolean validateDateFormat(String value) {
         Date parsedDate = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
+
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            //if not valid, it will throw ParseException
             parsedDate = sdf.parse(value);
-            return false;
         } catch (ParseException ex) {
             return true;
         }
+        return false;
     }
 
     public List<Error> validate(String title, String done, String dueDate, String priority) {

@@ -55,9 +55,16 @@ public class TaskDAOImpl implements TaskDAO {
 
         //SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id",1);
 
-        Optional<Task> task = Optional.of(jdbcTemplate.queryForObject(this.BY_ID_QUERY, new Object[]{id}, new TaskRowMapper()));
-
-        return task;
+        List<Task> tasks = jdbcTemplate.query(this.BY_ID_QUERY, new Object[]{id}, new TaskRowMapper());
+        if (tasks.isEmpty()) {
+            return Optional.empty();
+        } else {
+            if (tasks.size() == 1) {
+                return Optional.ofNullable(tasks.get(0));
+            } else {
+                throw new IllegalStateException("More then one row returned!");
+            }
+        }
     }
 
     @Override

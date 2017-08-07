@@ -91,7 +91,7 @@ public class AddTaskValidatorTest {
     @Test
     public void shouldReturnErrorWhenPriorityIsNull() {
 
-        List<Error> errors = validator.validate("buy desa", "false", "09-09-2017", null);
+        List<Error> errors = validator.validate("buy desa", "false", "2017-09-09", null);
         assertThat(errors.size(), is(1));
         assertThat(errors.get(0).getField(), is("priority"));
         assertThat(errors.get(0).getErrorMessage(), is("Must not be empty!"));
@@ -100,7 +100,7 @@ public class AddTaskValidatorTest {
     @Test
     public void shouldReturnErrorWhenPriorityIsEmpty() {
 
-        List<Error> errors = validator.validate("buy desa", "false", "09-09-2017", "");
+        List<Error> errors = validator.validate("buy desa", "false", "2017-09-09", "");
         assertThat(errors.size(), is(1));
         assertThat(errors.get(0).getField(), is("priority"));
         assertThat(errors.get(0).getErrorMessage(), is("Must not be empty!"));
@@ -109,7 +109,7 @@ public class AddTaskValidatorTest {
     @Test
     public void shouldReturnErrorWhenPriorityIsNotValidFormat() {
 
-        List<Error> errors = validator.validate("buy desa", "false", "09-09-2017", "AAA");
+        List<Error> errors = validator.validate("buy desa", "false", "2017-09-09", "AAA");
         assertThat(errors.size(), is(1));
         assertThat(errors.get(0).getField(), is("priority"));
         assertThat(errors.get(0).getErrorMessage(), is("There is no such priority!"));
