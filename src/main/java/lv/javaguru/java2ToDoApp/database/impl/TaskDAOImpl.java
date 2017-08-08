@@ -1,7 +1,6 @@
-package lv.javaguru.java2ToDoApp.database.impl.jdbc;
+package lv.javaguru.java2ToDoApp.database.impl;
 
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
-import lv.javaguru.java2ToDoApp.database.impl.DBException;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;

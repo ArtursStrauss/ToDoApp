@@ -100,26 +100,6 @@ public class Task {
         this.priority = parsedPriority;
     }
 
-    public boolean idNotNull() {
-        return this.id != null;
-    }
-
-    public boolean titleNotNull() {
-        return this.title != null;
-    }
-
-    public boolean doneNotNull() {
-        return this.done != null;
-    }
-
-    public boolean dueDateNotNull() {
-        return this.dueDate != null;
-    }
-
-    public boolean priorityNotNull() {
-        return this.priority != null;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
