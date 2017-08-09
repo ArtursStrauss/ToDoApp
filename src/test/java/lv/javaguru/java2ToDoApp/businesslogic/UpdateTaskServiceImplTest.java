@@ -39,7 +39,7 @@ public class UpdateTaskServiceImplTest {
     @Test
     public void updateTaskTest() {
 
-        Task task = TaskBuilder.createTask(1, "buy milk", "false", "2017-09-09", "LOW");
+        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
 
         doReturn(Optional.of(task)).when(taskDAO).getById(task.getId());
 
@@ -56,7 +56,7 @@ public class UpdateTaskServiceImplTest {
         doReturn(new TaskUpdater()).when(taskUpdater).updatePriority(task.getPriority().toString());
         doReturn(task).when(taskUpdater).update();
 
-        Response result = service.updateTask(1, "buy milk", "false", "2017-09-09", "LOW");
+        Response result = service.updateTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
 
         assertThat(result.isSuccess(), is(true));
         verify(taskDAO).update(any(Task.class));

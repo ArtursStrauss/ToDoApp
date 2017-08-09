@@ -32,26 +32,34 @@ public class TaskDAOImpl implements TaskDAO {
     public TaskDAOImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-        this.insertTask = new SimpleJdbcInsert(dataSource).withTableName("tasks").usingGeneratedKeyColumns("id");
+        this.insertTask = new SimpleJdbcInsert(dataSource)
+                .withTableName("tasks")
+                .usingColumns("title", "done", "due_date", "priority", "created_at", "updated_at")
+                .usingGeneratedKeyColumns("id");
     }
 
     @Override
     public Task save(Task task) throws DBException {
 
-        Map<String, Object> params = new HashMap<String, Object>();
+        task.setCreatedAt(new Date());
+        task.setUpdatedAt(new Date());
+
+        Map<String, Object> params = new HashMap<>();
         params.put("title", task.getTitle());
         params.put("done", task.isDone());
         params.put("due_date", task.getDueDate());
         params.put("priority", task.getPriority());
+        params.put("created_at", task.getCreatedAt());
+        params.put("updated_at", task.getUpdatedAt());
 
-        Number newId = insertTask.executeAndReturnKey(params);
-        task.setId(newId.intValue());
+        Long newId = insertTask.executeAndReturnKey(params).longValue();
+        task.setId(newId);
 
         return task;
     }
 
     @Override
-    public Optional<Task> getById(Integer id) throws DBException {
+    public Optional<Task> getById(Long id) throws DBException {
 
         //SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id",1);
 

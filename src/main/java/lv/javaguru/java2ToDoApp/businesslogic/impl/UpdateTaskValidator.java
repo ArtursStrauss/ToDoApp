@@ -20,7 +20,7 @@ public class UpdateTaskValidator {
     private List<Error> errors = Lists.newArrayList();
 
 
-    public UpdateTaskValidator validateTaskExists(Integer id) {
+    public UpdateTaskValidator validateTaskExists(Long id) {
         if (id == null) {
             errors.add(new Error("id", "Must not be empty!"));
         } else if (!taskExists(id)) {
@@ -29,7 +29,7 @@ public class UpdateTaskValidator {
         return this;
     }
 
-    private boolean taskExists(Integer id) {
+    private boolean taskExists(Long id) {
 
         return taskDAO.getById(id).isPresent();
     }

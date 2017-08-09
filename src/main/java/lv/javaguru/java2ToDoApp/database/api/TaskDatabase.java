@@ -10,11 +10,11 @@ public interface TaskDatabase {
 
     void removeTask(Task task);
 
-    Optional<Task> getTaskById(Integer id);
+    Optional<Task> getTaskById(Long id);
 
     Optional<Task> updateTask(Task task);
 
     List<Task> getAllTasks();
 
-    int getIndexByID(Integer id);
+    int getIndexByID(Long id);
 }

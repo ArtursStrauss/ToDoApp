@@ -15,7 +15,7 @@ public class GetTaskByIdServiceImpl implements GetTaskByIdService {
     private TaskDAO taskDAO;
 
     @Override
-    public Optional<Task> getTaskById(Integer id) {
+    public Optional<Task> getTaskById(Long id) {
 
         return taskDAO.getById(id);
     }

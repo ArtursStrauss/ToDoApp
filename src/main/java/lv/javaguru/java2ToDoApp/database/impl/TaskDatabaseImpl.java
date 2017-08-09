@@ -28,7 +28,7 @@ public class TaskDatabaseImpl implements TaskDatabase {
     }
 
     @Override
-    public Optional<Task> getTaskById(Integer id) {
+    public Optional<Task> getTaskById(Long id) {
         return tasks.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst();
@@ -52,7 +52,8 @@ public class TaskDatabaseImpl implements TaskDatabase {
     }
 
     @Override
-    public int getIndexByID(Integer id) {
+    public int getIndexByID(Long id) {
+
         return this.tasks.indexOf(this.getTaskById(id).get());
     }
 }

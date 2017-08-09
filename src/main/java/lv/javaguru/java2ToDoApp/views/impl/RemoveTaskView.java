@@ -25,7 +25,7 @@ public class RemoveTaskView implements View {
         System.out.println("Remove task from list execution start!");
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter task id:");
-        final Integer id = sc.nextInt();
+        final Long id = sc.nextLong();
 
         ///////////////////BL/////////////////////////
         Optional<Task> task = getTaskByIdService.getTaskById(id);

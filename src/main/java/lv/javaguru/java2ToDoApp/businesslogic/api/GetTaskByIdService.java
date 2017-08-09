@@ -5,5 +5,5 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 import java.util.Optional;
 
 public interface GetTaskByIdService {
-    public Optional<Task> getTaskById(Integer id);
+    public Optional<Task> getTaskById(Long id);
 }

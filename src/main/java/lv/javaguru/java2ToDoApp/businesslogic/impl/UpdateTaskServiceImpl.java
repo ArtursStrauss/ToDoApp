@@ -20,7 +20,7 @@ public class UpdateTaskServiceImpl implements UpdateTaskService {
     private TaskDAO taskDAO;
 
     @Override
-    public Response updateTask(Integer id, String title, String done, String dueDate, String priority) {
+    public Response updateTask(Long id, String title, String done, String dueDate, String priority) {
         List<Error> validationErrors = updateTaskValidator.validateTaskExists(id)
                 .validateDone(done)
                 .validateDueDate(dueDate)

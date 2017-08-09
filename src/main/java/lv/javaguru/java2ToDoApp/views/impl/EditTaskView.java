@@ -22,7 +22,7 @@ public class EditTaskView implements View {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter task ID (integer):");
-        Integer id = sc.nextInt();
+        Long id = sc.nextLong();
         sc.nextLine();
 
         System.out.print("Edit task title (if not, leave blank):");

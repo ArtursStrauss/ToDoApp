@@ -9,7 +9,7 @@ public class TaskBuilder {
 
     private static final String dateFormat = "yyyy-MM-dd";
 
-    private Integer id;
+    private Long id;
     private String title;
     private Boolean done;
     private Date dueDate;
@@ -23,7 +23,7 @@ public class TaskBuilder {
         return new TaskBuilder();
     }
 
-    public static Task createTask(Integer id,
+    public static Task createTask(Long id,
                                   String title,
                                   Boolean done,
                                   Date dueDate,
@@ -36,7 +36,7 @@ public class TaskBuilder {
                 .withPriority(priority).build();
     }
 
-    public static Task createTask(Integer id,
+    public static Task createTask(Long id,
                                   String title,
                                   String done,
                                   String dueDate,
@@ -59,7 +59,7 @@ public class TaskBuilder {
         return task;
     }
 
-    public TaskBuilder withId(Integer id) {
+    public TaskBuilder withId(Long id) {
         this.id = id;
         return this;
     }

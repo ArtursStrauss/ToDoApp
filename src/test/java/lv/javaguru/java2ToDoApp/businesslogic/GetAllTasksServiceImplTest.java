@@ -29,7 +29,7 @@ public class GetAllTasksServiceImplTest {
     @Test
     public void getAllTasksTest() {
 
-        Task task = TaskBuilder.createTask(1, "buy milk", "false", "2017-09-09", "LOW");
+        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
 
         doReturn(Lists.newArrayList(task)).when(taskDAO).getAll();
 

@@ -5,11 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Task {
+public class Task extends BaseEntity {
 
     private static final String dateFormat = "yyyy-MM-dd";
 
-    private Integer id;
+    private Long id;
     private String title;
     private Boolean done;
     private Date dueDate;
@@ -19,7 +19,7 @@ public class Task {
         this.priority = Priority.LOW;
     }
 
-    public Task(Integer id, String title, Boolean done, Date dueDate, Priority priority) {
+    public Task(Long id, String title, Boolean done, Date dueDate, Priority priority) {
         this.id = id;
         this.title = title;
         this.done = done;
@@ -27,12 +27,12 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public Integer getId() {
+    public Long getId() {
 
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
 
         this.id = id;
     }
@@ -95,7 +95,8 @@ public class Task {
 
         this.priority = priority;
     }
-    public void setPriority(String priority){
+
+    public void setPriority(String priority) {
         Priority parsedPriority = Priority.valueOf(priority);
         this.priority = parsedPriority;
     }

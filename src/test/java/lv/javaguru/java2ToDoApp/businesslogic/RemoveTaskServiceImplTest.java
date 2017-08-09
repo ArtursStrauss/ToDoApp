@@ -31,7 +31,7 @@ public class RemoveTaskServiceImplTest {
     @Test
     public void removeTaskTest(){
 
-        Optional<Task> task = Optional.of(TaskBuilder.createTask(1,"buy milk", "false", "2017-09-09", "LOW"));
+        Optional<Task> task = Optional.of(TaskBuilder.createTask(new Long(1),"buy milk", "false", "2017-09-09", "LOW"));
 
         doReturn(task).when(taskDAO).getById(task.get().getId());
         Boolean result = service.removeTask(task.get());

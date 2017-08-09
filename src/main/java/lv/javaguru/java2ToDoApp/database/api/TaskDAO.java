@@ -12,7 +12,7 @@ public interface TaskDAO {
 
     void update(Task task);
 
-    Optional<Task> getById(Integer id);
+    Optional<Task> getById(Long id);
 
     Optional<Task> getByTitle(String id);
 
