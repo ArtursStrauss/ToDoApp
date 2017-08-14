@@ -6,6 +6,7 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Component
@@ -15,6 +16,7 @@ public class RemoveTaskServiceImpl implements RemoveTaskService {
     private TaskDAO taskDAO;
 
     @Override
+    @Transactional
     public boolean removeTask(Task task) {
         Optional<Task> foundTask = taskDAO.getById(task.getId());
         if (foundTask.isPresent()) {

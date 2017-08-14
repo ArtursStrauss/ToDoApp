@@ -6,6 +6,7 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static lv.javaguru.java2ToDoApp.domain.TaskBuilder.createTask;
@@ -19,6 +20,7 @@ public class AddTaskServiceImpl implements AddTaskService {
     private AddTaskValidator addTaskValidator;
 
     @Override
+    @Transactional
     public Response addTask(String title, String done, String dueDate, String priority) {
 
         List<Error> validationErrors = addTaskValidator.validate(title, done, dueDate, priority);

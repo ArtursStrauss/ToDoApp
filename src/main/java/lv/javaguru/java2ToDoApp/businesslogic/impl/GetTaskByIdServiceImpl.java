@@ -6,6 +6,7 @@ import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Component
@@ -15,6 +16,7 @@ public class GetTaskByIdServiceImpl implements GetTaskByIdService {
     private TaskDAO taskDAO;
 
     @Override
+    @Transactional
     public Optional<Task> getTaskById(Long id) {
 
         return taskDAO.getById(id);

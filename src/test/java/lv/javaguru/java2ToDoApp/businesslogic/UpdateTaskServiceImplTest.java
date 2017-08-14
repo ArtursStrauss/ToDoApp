@@ -39,6 +39,8 @@ public class UpdateTaskServiceImplTest {
     @Test
     public void updateTaskTest() {
 
+        //doReturn(Lists.newArrayList()).when(updateTaskValidator).
+
         Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
 
         doReturn(Optional.of(task)).when(taskDAO).getById(task.getId());

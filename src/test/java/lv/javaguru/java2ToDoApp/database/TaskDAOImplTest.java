@@ -5,8 +5,13 @@ import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +22,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SpringAppConfig.class)
+@Transactional
 public class TaskDAOImplTest {
 
     private DatabaseUtil databaseUtil;
@@ -32,7 +40,7 @@ public class TaskDAOImplTest {
 
     @Test
     public void testCreate() throws Exception {
-        Task task = create("Clean room","false","2017-09-09","LOW");
+        Task task = create("Clean room", "false", "2017-09-09", "LOW");
         assertThat(task.getId(), is(notNullValue()));
 
         Optional<Task> taskFromDB = taskDAO.getById(task.getId());
@@ -47,8 +55,8 @@ public class TaskDAOImplTest {
 
     @Test
     public void testGetAll() throws Exception {
-        Task task1 = create("Clean room","false","2017-09-09","LOW");
-        Task task2 = create("Clean second room","false","2017-09-10","LOW");
+        Task task1 = create("Clean room", "false", "2017-09-09", "LOW");
+        Task task2 = create("Clean second room", "false", "2017-09-10", "LOW");
 
         List<Task> tasks = taskDAO.getAll();
 
@@ -59,7 +67,7 @@ public class TaskDAOImplTest {
 
     @Test
     public void testGetByTitle() throws Exception {
-        Task task = create("Clean room","false","2017-09-09","LOW");
+        Task task = create("Clean room", "false", "2017-09-09", "LOW");
 
         Optional<Task> taskFromDB = taskDAO.getByTitle(task.getTitle());
 
@@ -73,7 +81,7 @@ public class TaskDAOImplTest {
     @Test
     public void testDelete() throws Exception {
 
-        Task task = create("Clean room","false","2017-09-09","LOW");
+        Task task = create("Clean room", "false", "2017-09-09", "LOW");
         List<Task> tasks = taskDAO.getAll();
         assertThat(tasks.size(), is(1));
 

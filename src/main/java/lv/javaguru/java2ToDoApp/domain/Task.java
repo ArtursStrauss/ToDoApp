@@ -1,18 +1,33 @@
 package lv.javaguru.java2ToDoApp.domain;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
+@Table(name="tasks")
 public class Task extends BaseEntity {
 
     private static final String dateFormat = "yyyy-MM-dd";
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Long id;
+
+    @Column(name = "title", nullable = false)
     private String title;
+
+    @Column(name = "done", nullable = false)
     private Boolean done;
+
+    @Column(name = "due_date", nullable = false)
     private Date dueDate;
+
+    @Column(name = "priority", nullable = false, columnDefinition = "enum('DUMMY')")
+    @Enumerated(EnumType.STRING)
     private Priority priority;
 
     public Task() {

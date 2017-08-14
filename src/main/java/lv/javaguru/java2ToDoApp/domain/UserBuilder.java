@@ -5,6 +5,7 @@ public class UserBuilder {
     private Long id;
     private String login;
     private String password;
+    private String fullName;
 
     private UserBuilder() {
     }
@@ -18,6 +19,7 @@ public class UserBuilder {
         user.setId(id);
         user.setLogin(login);
         user.setPassword(password);
+        user.setFullName(fullName);
         return user;
     }
 
@@ -36,4 +38,8 @@ public class UserBuilder {
         return this;
     }
 
+    public UserBuilder withFullName(String fullName){
+        this.fullName = fullName;
+        return this;
+    }
 }

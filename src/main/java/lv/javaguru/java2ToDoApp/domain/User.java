@@ -1,10 +1,24 @@
 package lv.javaguru.java2ToDoApp.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "app_users")
 public class User extends BaseEntity {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "login", nullable = false)
     private String login;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
 
     public Long getId() {
         return id;
@@ -12,6 +26,7 @@ public class User extends BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
+
     }
 
     public String getLogin() {
@@ -30,12 +45,21 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    public String getFullName() {
+        return this.fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", fullName='" + fullName + '\'' +
                 '}';
     }
 
@@ -48,7 +72,8 @@ public class User extends BaseEntity {
 
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        return password != null ? password.equals(user.password) : user.password == null;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        return fullName != null ? fullName.equals(user.fullName) : user.fullName == null;
     }
 
     @Override
@@ -56,6 +81,7 @@ public class User extends BaseEntity {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
         return result;
     }
 }

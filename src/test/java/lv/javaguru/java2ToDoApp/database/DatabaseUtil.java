@@ -1,11 +1,13 @@
 package lv.javaguru.java2ToDoApp.database;
 
 import lv.javaguru.java2ToDoApp.database.impl.DBException;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +15,19 @@ import java.util.List;
 @Component
 public class DatabaseUtil {
 
-    private JdbcTemplate jdbcTemplate;
-
     @Autowired
-    public DatabaseUtil(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+    SessionFactory sessionFactory;
 
     public void cleanDatabase() throws DBException {
+
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+
         for (String tableName : getTableNames()) {
-            jdbcTemplate.update("delete from " + tableName);
+
+            SQLQuery query = session.createSQLQuery("delete from " + tableName);
+            query.executeUpdate();
+            transaction.commit();
         }
     }
 
