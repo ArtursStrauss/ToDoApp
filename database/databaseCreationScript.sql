@@ -2,7 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `java2` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `java2` DEFAULT CHARACTER SET utf8;
 USE `java2` ;
 
 -- -----------------------------------------------------
@@ -52,6 +52,24 @@ AUTO_INCREMENT = 1002;
 
 ALTER TABLE `task_lists` ADD FOREIGN KEY (`user_id`) REFERENCES `app_users`(`id`);
 CREATE INDEX `idx_task_lists_user_id` ON `task_lists`(`user_id`);
+
+-- -----------------------------------------------------
+-- Table `Java2ToDoApp`.`task_list_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `task_list_items` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `task_list_id` BIGINT(20) NOT NULL,
+  `task_id` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1002;
+
+ALTER TABLE `task_list_items` ADD FOREIGN KEY (`task_list_id`) REFERENCES `task_lists`(`id`);
+CREATE INDEX `idx_task_list_items_task_list_id` ON `task_list_items`(`task_list_id`);
+
+ALTER TABLE `task_list_items` ADD FOREIGN KEY (`task_id`) REFERENCES `tasks`(`id`);
+CREATE INDEX `idx_task_list_items_task_id` ON `task_list_items`(`task_id`);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

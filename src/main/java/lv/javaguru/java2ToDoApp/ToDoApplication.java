@@ -23,11 +23,6 @@ public class ToDoApplication {
         // 4. Print task list to console
         // 5. Exit
 
-        //TaskDatabase taskDatabase = new TaskDatabaseImpl();
-        //AddTaskValidator addTaskValidator = new AddTaskValidator(taskDatabase);
-        //UpdateTaskValidator updateTaskValidator = new UpdateTaskValidator(taskDatabase);
-        //BusinessLogic businessLogic = new BusinessLogicImpl(taskDatabase, addTaskValidator, updateTaskValidator);
-
         Map<Integer, View> commands = new HashMap<>();
         commands.put(1, applicationContext.getBean(AddTaskView.class));
         commands.put(2, applicationContext.getBean(RemoveTaskView.class));

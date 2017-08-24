@@ -4,7 +4,7 @@ public class TaskListBuilder {
 
     private Long id;
     private String title;
-    private User user;
+    private Long userId;
 
     private TaskListBuilder(){}
 
@@ -16,7 +16,7 @@ public class TaskListBuilder {
         TaskList list = new TaskList();
         list.setId(id);
         list.setTitle(title);
-        list.setUser(user);
+        list.setUserId(userId);
         return list;
     }
 
@@ -30,13 +30,13 @@ public class TaskListBuilder {
         return this;
     }
 
-    public TaskListBuilder withUser(User user) {
-        this.user = user;
+    public TaskListBuilder withUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
-    public TaskListBuilder withUser(UserBuilder userBuilder) {
-        this.user = userBuilder.build();
-        return this;
-    }
+    //public TaskListBuilder withUser(UserBuilder userBuilder) {
+    //    this.user = userBuilder.build();
+    //    return this;
+    //}
 }

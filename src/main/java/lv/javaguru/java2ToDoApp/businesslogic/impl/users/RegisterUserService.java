@@ -22,7 +22,7 @@ class RegisterUserServiceImpl implements RegisterUserService {
     @Autowired
     private RegisterUserValidator validator;
     @Autowired
-    private UserDAO dao;
+    private UserDAO userDAO;
 
     @Override
     @Transactional
@@ -36,7 +36,7 @@ class RegisterUserServiceImpl implements RegisterUserService {
                 .withLogin(login)
                 .withPassword(password).build();
 
-        dao.save(user);
+        userDAO.save(user);
 
         return Response.createSuccessResponse();
     }
