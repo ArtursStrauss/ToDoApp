@@ -4,8 +4,8 @@
 <%--content--%>
 
 <div class="container">
-  <div class="card p-3 bg-light text-center">
-    <h2 class="card-title">Sign up</h2>
+  <div class="card p-3 bg-light">
+    <h2 class="card-title text-center">Sign up</h2>
     <form method="post">
       <div class="form-row">
         <div class="form-group col-4 mx-auto">
@@ -37,11 +37,11 @@
           <p class="form-text"><c:out value="${map['CONFIRM_PASSWORD'].getErrorMessage()}"/></p>
         </div>
       </div>
-
-      <button type="submit" class="btn btn-primary">
-        <i class="icon-lock icon-white"></i>Sign up
-      </button>
-
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">
+          <i class="icon-lock icon-white"></i>Sign up
+        </button>
+      </div>
       <div align="center">
         You have already an account?
         <a href="/login">Sign in here</a>
