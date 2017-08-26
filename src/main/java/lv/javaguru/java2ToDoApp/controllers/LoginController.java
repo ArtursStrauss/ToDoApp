@@ -13,6 +13,7 @@ public class LoginController {
 
     @RequestMapping(value = "login", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("loginTabStyle", "active");
         return new ModelAndView("UserLogin", "model", null);
     }
 

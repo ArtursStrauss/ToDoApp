@@ -19,6 +19,7 @@ public class UserRegistrationController {
 
     @RequestMapping(value = "register", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("registerTabStyle", "active");
         return new ModelAndView("UserRegistration", "model", null);
     }
 
