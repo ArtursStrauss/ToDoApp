@@ -1,21 +1,22 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
-import java.util.List;
+import java.util.Map;
 
 public class Response {
     private boolean success;
-    private List<Error> errors;
+    private Map<String, Error> errors;
 
     public static Response createSuccessResponse() {
 
         return new Response(true, null);
     }
 
-    public static Response createFailResponse(List<Error> errors) {
+    public static Response createFailResponse(Map<String, Error> errors) {
+
         return new Response(false, errors);
     }
 
-    public Response(boolean success, List<Error> errors) {
+    public Response(boolean success, Map<String, Error> errors) {
         this.success = success;
         this.errors = errors;
     }
@@ -26,11 +27,11 @@ public class Response {
     }
 
     public boolean isFail() {
+
         return !success;
     }
 
-    public List<Error> getErrors() {
+    public Map<String, Error> getErrors() {
         return errors;
-
     }
 }

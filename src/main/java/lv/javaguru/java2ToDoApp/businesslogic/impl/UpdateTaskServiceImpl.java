@@ -29,9 +29,9 @@ public class UpdateTaskServiceImpl implements UpdateTaskService {
                 .validatePriority(priority)
                 .validate();
 
-        if (!validationErrors.isEmpty()) {
-            return Response.createFailResponse(validationErrors);
-        }
+        //if (!validationErrors.isEmpty()) {
+        //    return Response.createFailResponse(validationErrors);
+        //}
 
         Task task = taskUpdater.getTask(id)
                 .updateTitle(title)

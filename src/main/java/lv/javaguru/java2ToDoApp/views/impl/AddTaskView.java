@@ -39,12 +39,12 @@ public class AddTaskView implements View {
 
         //////////////BL END//////////
 
-        if (response.isFail()) {
-            for (Error error : response.getErrors()) {
-                System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
-            }
-            System.out.println("Can not addTask this task!");
-        }
+        //if (response.isFail()) {
+        //    for (Error error : response.getErrors()) {
+        //        System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
+        //    }
+        //    System.out.println("Can not addTask this task!");
+       // }
 
         System.out.println("Add task to list! Execution end!");
         System.out.println();

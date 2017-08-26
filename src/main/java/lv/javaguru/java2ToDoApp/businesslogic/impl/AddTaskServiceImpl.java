@@ -23,10 +23,10 @@ public class AddTaskServiceImpl implements AddTaskService {
     @Transactional
     public Response addTask(String title, String done, String dueDate, String priority) {
 
-        List<Error> validationErrors = addTaskValidator.validate(title, done, dueDate, priority);
-        if (!validationErrors.isEmpty()) {
-            return Response.createFailResponse(validationErrors);
-        }
+        //List<Error> validationErrors = addTaskValidator.validate(title, done, dueDate, priority);
+        //if (!validationErrors.isEmpty()) {
+        //    return Response.createFailResponse(validationErrors);
+        //}
 
         Task task = createTask()
                 .withTitle(title)

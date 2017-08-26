@@ -43,12 +43,12 @@ public class EditTaskView implements View {
 
         ///////////////////////BL END/////////////////
 
-        if (response.isFail()) {
-            for (Error error : response.getErrors()) {
-                System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
-            }
-            System.out.println("Can not updateTask this task!");
-        }
+        //if (response.isFail()) {
+        //    for (Error error : response.getErrors()) {
+        //        System.out.println("Error: " + error.getField() + " " + error.getErrorMessage());
+        //    }
+        //    System.out.println("Can not updateTask this task!");
+       // }
 
         System.out.println("Update task in list! Execution end!");
         System.out.println();
