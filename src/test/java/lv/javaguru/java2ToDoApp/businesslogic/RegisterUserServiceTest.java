@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.users.RegisterUserServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.user.RegisterUserServiceImpl;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.junit.Test;

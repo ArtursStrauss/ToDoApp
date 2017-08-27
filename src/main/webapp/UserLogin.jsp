@@ -9,17 +9,22 @@
 
     <form method="post">
       <div class="form-group row justify-content-center">
-        <label class="text-right col-2 col-form-label" for="email">Email:</label>
-        <input id="email" name="email" type="email" class="form-control col-4" placeholder="your@email.com" required="required"/>
-        <p class="form-text"><c:out value="${requestScope.errorEmail}"/></p>
+        <label class="text-right col-2 col-form-label" for="login">Login:</label>
+        <input id="login" name="login" type="text" class="form-control col-4" required="required"/>
       </div>
 
       <div class="form-group row justify-content-center">
         <label class="text-right col-2 col-form-label" for="password">Password:</label>
         <input type="password" id="password" name="password" class="form-control col-4" placeholder="min 6 characters" required="required"/>
-        <p class="form-text"><c:out value="${requestScope.errorPassword}"/></p>
       </div>
-
+      <c:if test="${map != null}">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="form-text"><c:out value="${map['LOGIN'].getErrorMessage()}"/></h5>
+        </div>
+      </c:if>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">
           <i class="icon-lock icon-white"></i>

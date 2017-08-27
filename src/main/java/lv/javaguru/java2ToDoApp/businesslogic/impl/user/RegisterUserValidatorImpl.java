@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl.users;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.user;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserValidator;

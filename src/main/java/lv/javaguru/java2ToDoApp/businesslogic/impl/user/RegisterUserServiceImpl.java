@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl.users;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.user;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserValidator;
