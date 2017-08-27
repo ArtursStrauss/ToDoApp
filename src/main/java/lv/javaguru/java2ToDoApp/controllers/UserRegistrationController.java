@@ -26,10 +26,13 @@ public class UserRegistrationController {
     @RequestMapping(value = "register", method = {RequestMethod.POST})
     public ModelAndView processPostRequest(HttpServletRequest request, HttpServletResponse response) {
 
-        Response serviceResponse = service.register(request.getParameter("login"),
-                request.getParameter("password"),
-                request.getParameter("name"),
-                request.getParameter("confirmationPassword"));
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String confirmationPassword = request.getParameter("confirmationPassword");
+
+        Response serviceResponse = service.register(login, password, name, confirmationPassword);
+
         if (serviceResponse.isSuccess()) {
             request.getSession().setAttribute("messageSuccess", "User registered successfully!");
             return new ModelAndView("redirect:/", "model", null);
