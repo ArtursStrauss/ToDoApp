@@ -1,6 +1,5 @@
 package lv.javaguru.java2ToDoApp.controllers;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +13,7 @@ public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView processRootRequest(HttpServletRequest req, HttpServletResponse resp) {
+
         return new ModelAndView("Index", "model", "Hello from MVC");
     }
 

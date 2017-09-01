@@ -7,6 +7,7 @@ import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,8 @@ public class RegisterUserServiceImpl implements RegisterUserService {
     private RegisterUserValidator validator;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     @Transactional
@@ -32,7 +35,7 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 
         User user = createUser()
                 .withLogin(login)
-                .withPassword(password)
+                .withPassword(bCryptPasswordEncoder.encode(password))
                 .withFullName(fullName)
                 .build();
 

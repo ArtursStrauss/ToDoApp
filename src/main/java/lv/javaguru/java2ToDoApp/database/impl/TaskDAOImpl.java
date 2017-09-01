@@ -40,6 +40,15 @@ public class TaskDAOImpl implements TaskDAO {
     }
 
     @Override
+    public List<Task> getAllByUserId(Long userId) throws DBException {
+
+        return session()
+                .createCriteria(Task.class)
+                .add(Restrictions.eq("userId", userId))
+                .list();
+    }
+
+    @Override
     public List<Task> getAll() throws DBException {
 
         return session()

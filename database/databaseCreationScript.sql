@@ -24,7 +24,10 @@ AUTO_INCREMENT = 1002;
 
 ALTER TABLE `tasks` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP();
 ALTER TABLE `tasks` ADD `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP();
+alter TABLE `tasks` add `user_id` BIGINT(20) NOT NULL;
 
+ALTER TABLE `tasks` ADD FOREIGN KEY (`user_id`) REFERENCES `app_users`(`id`);
+CREATE INDEX `idx_tasks_user_id` ON `tasks`(`user_id`);
 -- -----------------------------------------------------
 -- Table `Java2ToDoApp`.`app_users`
 -- -----------------------------------------------------

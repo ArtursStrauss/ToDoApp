@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name="tasks")
 public class Task extends BaseEntity {
 
-    private static final String dateFormat = "yyyy-MM-dd";
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +29,9 @@ public class Task extends BaseEntity {
     @Column(name = "priority", nullable = false, columnDefinition = "enum('DUMMY')")
     @Enumerated(EnumType.STRING)
     private Priority priority;
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     public Task() {
         this.priority = Priority.LOW;
@@ -90,7 +93,7 @@ public class Task extends BaseEntity {
 
     public void setDueDate(String dueDate) {
 
-        DateFormat formatter = new SimpleDateFormat(this.dateFormat);
+        DateFormat formatter = new SimpleDateFormat(this.DATE_FORMAT);
         Date parsedDate = new Date();
         try {
             parsedDate = formatter.parse(dueDate);
@@ -116,6 +119,14 @@ public class Task extends BaseEntity {
         this.priority = parsedPriority;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,20 +134,22 @@ public class Task extends BaseEntity {
 
         Task task = (Task) o;
 
-        if (done != task.done) return false;
-        if (!id.equals(task.id)) return false;
-        if (!title.equals(task.title)) return false;
-        if (!dueDate.equals(task.dueDate)) return false;
+        if (userId != task.userId) return false;
+        if (id != null ? !id.equals(task.id) : task.id != null) return false;
+        if (title != null ? !title.equals(task.title) : task.title != null) return false;
+        if (done != null ? !done.equals(task.done) : task.done != null) return false;
+        if (dueDate != null ? !dueDate.equals(task.dueDate) : task.dueDate != null) return false;
         return priority == task.priority;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + title.hashCode();
-        result = 31 * result + (done ? 1 : 0);
-        result = 31 * result + dueDate.hashCode();
-        result = 31 * result + priority.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (done != null ? done.hashCode() : 0);
+        result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
+        result = 31 * result + (priority != null ? priority.hashCode() : 0);
+        result = 31 * result + (int) (userId ^ (userId >>> 32));
         return result;
     }
 
@@ -151,6 +164,7 @@ public class Task extends BaseEntity {
                 ", done=" + done +
                 ", dueDate=" + dateFormat.format(dueDate) +
                 ", priority=" + priority +
+                ", userId=" + userId +
                 '}';
     }
 }

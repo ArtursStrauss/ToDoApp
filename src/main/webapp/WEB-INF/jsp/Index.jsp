@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ include file="common/header.jspf"%>
+<%@ include file="./common/header.jspf"%>
 
 <div class="container">
   <div class="card bg-light">
@@ -32,7 +32,7 @@
 
       <c:if test="${sessionScope.user != null}">
         <p>
-          <a class="btn btn-primary btn-large" href="/todos">
+          <a class="btn btn-primary btn-large" href="user/todos">
             Go to my Home page
           </a>
         </p>
@@ -41,4 +41,4 @@
   </div>
 </div>
 
-<%@ include file="common/footer.jspf"%>
+<%@ include file="./common/footer.jspf"%>

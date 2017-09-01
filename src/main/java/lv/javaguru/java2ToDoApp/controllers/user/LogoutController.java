@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.controllers;
+package lv.javaguru.java2ToDoApp.controllers.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LogoutController {
 
-    @RequestMapping(value = "/user/logout", method = {RequestMethod.GET})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         return new ModelAndView("redirect:/index", "model", null);

@@ -14,6 +14,7 @@ public class TaskBuilder {
     private Boolean done;
     private Date dueDate;
     private Priority priority;
+    private Long userId;
 
     private TaskBuilder() {
     }
@@ -27,26 +28,32 @@ public class TaskBuilder {
                                   String title,
                                   Boolean done,
                                   Date dueDate,
-                                  Priority priority) {
+                                  Priority priority,
+                                  Long userId) {
         return createTask()
                 .withId(id)
                 .withTitle(title)
                 .withDone(done)
                 .withDueDate(dueDate)
-                .withPriority(priority).build();
+                .withPriority(priority)
+                .withUserId(userId)
+                .build();
     }
 
     public static Task createTask(Long id,
                                   String title,
                                   String done,
                                   String dueDate,
-                                  String priority) {
+                                  String priority,
+                                  Long userId) {
         return createTask()
                 .withId(id)
                 .withTitle(title)
                 .withDone(done)
                 .withDueDate(dueDate)
-                .withPriority(priority).build();
+                .withPriority(priority)
+                .withUserId(userId)
+                .build();
     }
 
     public Task build() {
@@ -56,6 +63,7 @@ public class TaskBuilder {
         task.setDone(this.done);
         task.setDueDate(this.dueDate);
         task.setPriority(this.priority);
+        task.setUserId(this.userId);
         return task;
     }
 
@@ -104,6 +112,11 @@ public class TaskBuilder {
 
     public TaskBuilder withPriority(String priority) {
         this.priority = Priority.valueOf(priority);
+        return this;
+    }
+
+    public TaskBuilder withUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 }

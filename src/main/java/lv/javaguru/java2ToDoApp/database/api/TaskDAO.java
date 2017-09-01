@@ -16,5 +16,7 @@ public interface TaskDAO {
 
     Optional<Task> getByTitle(String id);
 
+    List<Task> getAllByUserId(Long userId);
+
     List<Task> getAll();
 }
