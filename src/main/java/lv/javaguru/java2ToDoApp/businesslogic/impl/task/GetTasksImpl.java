@@ -1,6 +1,6 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.GetAllTasksService;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.User;
@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
-public class GetAllTasksServiceImpl implements GetAllTasksService {
+public class GetTasksImpl implements GetTasks {
 
     @Autowired
     private TaskDAO taskDAO;
@@ -28,5 +29,12 @@ public class GetAllTasksServiceImpl implements GetAllTasksService {
     public List<Task> getAllTasksByUser(User user) {
 
         return taskDAO.getAllByUserId(user.getId());
+    }
+
+    @Override
+    @Transactional
+    public Optional<Task> getTaskById(Long id) {
+
+        return taskDAO.getById(id);
     }
 }

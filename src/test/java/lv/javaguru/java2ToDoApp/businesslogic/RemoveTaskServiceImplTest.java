@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.RemoveTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.RemoveTaskServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.RemoveTaskServiceImpl;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskBuilder;

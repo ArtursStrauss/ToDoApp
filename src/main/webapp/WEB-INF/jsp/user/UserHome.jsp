@@ -1,18 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="./common/header.jspf" %>
+<%@ include file="../common/header.jspf" %>
 <%--content--%>
 
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <%@ include file="./common/sidebar.jspf" %>
+            <%@ include file="../common/sidebar.jspf" %>
         </div>
         <div class="col-9">
             <div class="card bg-light mt-3 p-1">
                 <div class="card-body">
-                    <h1 class="card-title">My Todo list</h1>
+                    <h1 class="card-title">My Task list</h1>
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -36,29 +36,35 @@
                                 </td>
                                 <td>
                                     <!-- <span class="label <tl:statusStyle status="${task.isDone()}"/> "> <tl:statusLabel status="${task.isDone()}"/></span>-->
-                                    ${task.isDone()}
+                                        ${task.isDone()}
                                 </td>
                                 <td>
-                                    <a class="btn btn-mini btn-primary" href="/todos/update?todoId=${task.getId()}"><i
+                                    <a class="btn btn-mini btn-primary" href="/user/todos/update?taskId=${task.getId()}"><i
                                             class="icon-edit icon-white"></i> Edit</a>
                                     <a class="btn btn-mini btn-danger" data-toggle="modal"
-                                       href="#confirm_delete_${task.getId()}"><i class="icon-remove icon-white"></i>
-                                        Delete</a>
-                                    <div class="modal hide" id="confirm_delete_${task.getId()}">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                            <h3>Confirmation</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure to delete todo ${task.getId()} '${task.getTitle()}'
-                                                ?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="/todos/delete.do" method="post">
-                                                <input type="hidden" name="todoId" value="${task.getId()}">
-                                                <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-                                                <button type="submit" class="btn btn-primary">Confirm</button>
-                                            </form>
+                                       href="#confirm_delete_${task.getId()}"><i class="icon-remove icon-white"></i>Delete</a>
+                                    <div class="modal fade" id="confirm_delete_${task.getId()}" role="dialog"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure to delete todo ${task.getId()} '${task.getTitle()}'?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="/user/todos/delete" method="post">
+                                                        <input type="hidden" name="taskId" value="${task.getId()}">
+                                                        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -102,4 +108,4 @@
 </div>
 
 <%--end content--%>
-<%@ include file="./common/footer.jspf" %>
+<%@ include file="../common/footer.jspf" %>

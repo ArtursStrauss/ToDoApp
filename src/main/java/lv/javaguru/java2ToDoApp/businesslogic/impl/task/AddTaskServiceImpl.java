@@ -1,13 +1,13 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.AddTaskService;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 import static lv.javaguru.java2ToDoApp.domain.TaskBuilder.createTask;
 

@@ -1,6 +1,7 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
 import com.google.common.collect.Lists;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import org.springframework.stereotype.Component;
 

@@ -3,8 +3,8 @@ package lv.javaguru.java2ToDoApp.businesslogic;
 
 import com.google.common.collect.Lists;
 import lv.javaguru.java2ToDoApp.businesslogic.api.AddTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskServiceImpl;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.AddTaskServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.AddTaskValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;

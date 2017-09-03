@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.controllers.task;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.TaskService;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskCreateService;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskBuilder;
 import lv.javaguru.java2ToDoApp.domain.User;
@@ -20,7 +20,7 @@ import java.util.Date;
 public class CreateTaskController {
 
     @Autowired
-    private TaskService taskService;
+    private TaskCreateService taskCreateService;
 
     @RequestMapping(value = "user/todos/new", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -46,7 +46,7 @@ public class CreateTaskController {
                 .withUserId(user.getId())
                 .build();
 
-        taskService.create(task);
+        taskCreateService.create(task);
 
         return new ModelAndView("redirect:/user/todos", "model", null);
     }

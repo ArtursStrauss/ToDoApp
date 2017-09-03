@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.businesslogic;
 
-import lv.javaguru.java2ToDoApp.businesslogic.impl.AddTaskValidator;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.AddTaskValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
 import org.junit.Test;
 import org.junit.runner.RunWith;

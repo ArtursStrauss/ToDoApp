@@ -1,6 +1,8 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl;
+package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.UpdateTaskService;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskUpdater;

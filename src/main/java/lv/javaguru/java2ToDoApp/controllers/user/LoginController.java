@@ -26,7 +26,7 @@ public class LoginController {
         // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         // System.out.println(auth.toString());
 
-        return new ModelAndView("UserLogin", "model", null);
+        return new ModelAndView("user/UserLogin", "model", null);
 
     }
 }

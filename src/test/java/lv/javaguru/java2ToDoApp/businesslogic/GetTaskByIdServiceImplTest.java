@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.GetTaskByIdService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.GetTaskByIdServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.GetTasksImpl;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskBuilder;
@@ -24,12 +24,12 @@ public class GetTaskByIdServiceImplTest {
     @Mock
     private TaskDAO taskDAO;
     @InjectMocks
-    private GetTaskByIdService service = new GetTaskByIdServiceImpl();
+    private GetTasks service = new GetTasksImpl();
 
     @Test
     public void getTaskByIdTest() {
 
-        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
+        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW", new Long(1));
 
         doReturn(Optional.of(task)).when(taskDAO).getById(task.getId());
 

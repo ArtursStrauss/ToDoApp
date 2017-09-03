@@ -37,7 +37,7 @@ public class UserRegistrationController {
             request.getSession().setAttribute("messageSuccess", "User registered successfully!");
             return new ModelAndView("redirect:/", "model", null);
         } else {
-            return new ModelAndView("UserRegistration", "map", serviceResponse.getErrors());
+            return new ModelAndView("user/UserRegistration", "map", serviceResponse.getErrors());
         }
     }
 }

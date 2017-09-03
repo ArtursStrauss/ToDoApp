@@ -1,8 +1,8 @@
 package lv.javaguru.java2ToDoApp.businesslogic;
 
 import com.google.common.collect.Lists;
-import lv.javaguru.java2ToDoApp.businesslogic.api.GetAllTasksService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.GetAllTasksServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.task.GetTasksImpl;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.TaskBuilder;
@@ -24,12 +24,12 @@ public class GetAllTasksServiceImplTest {
     @Mock
     private TaskDAO taskDAO;
     @InjectMocks
-    private GetAllTasksService service = new GetAllTasksServiceImpl();
+    private GetTasks service = new GetTasksImpl();
 
     @Test
     public void getAllTasksTest() {
 
-        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW");
+        Task task = TaskBuilder.createTask(new Long(1), "buy milk", "false", "2017-09-09", "LOW",new Long(1));
 
         doReturn(Lists.newArrayList(task)).when(taskDAO).getAll();
 

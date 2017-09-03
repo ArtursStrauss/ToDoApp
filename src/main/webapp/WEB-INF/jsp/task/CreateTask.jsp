@@ -11,9 +11,9 @@
             <%@ include file="../common/sidebar.jspf" %>
         </div>
         <div class="col-9">
-            <div class="card bg-light mt-3 p-1">
+            <div class="card bg-light mt-3">
                 <div class="card-body">
-                    <h1 class="card-title">My Todo list</h1>
+                    <h1 class="card-title">Create Task</h1>
 
                     <form id="createTaskForm" action="/user/todos/new" method="post">
                         <div class="form-group row">
