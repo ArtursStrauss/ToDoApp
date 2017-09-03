@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tl" uri="http://tasklist.org/taglib" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/header.jspf" %>
 <%--content--%>
@@ -31,18 +32,20 @@
                                 <td>${task.getTitle()}</td>
                                 <td><fmt:formatDate value="${task.getDueDate()}" pattern="dd/MM/yyyy"/></td>
                                 <td>
-                                    <!--<i class="icon-circle-arrow-<tl:priorityIcon priority="${task.getPriority()}"/>"></i>-->
+                                    <i class="fa fa-arrow-circle-<tl:priorityIcon priority="${task.getPriority()}"/>"></i>
                                         ${task.getPriority()}
                                 </td>
                                 <td>
-                                    <!-- <span class="label <tl:statusStyle status="${task.isDone()}"/> "> <tl:statusLabel status="${task.isDone()}"/></span>-->
-                                        ${task.isDone()}
+                                    <span class="badge <tl:statusStyle status="${task.isDone()}"/>"><tl:statusLabel
+                                            status="${task.isDone()}"/></span>
                                 </td>
                                 <td>
-                                    <a class="btn btn-mini btn-primary" href="/user/todos/update?taskId=${task.getId()}"><i
-                                            class="icon-edit icon-white"></i> Edit</a>
-                                    <a class="btn btn-mini btn-danger" data-toggle="modal"
-                                       href="#confirm_delete_${task.getId()}"><i class="icon-remove icon-white"></i>Delete</a>
+                                    <a class="btn btn-sm btn-primary"
+                                       href="/user/todos/update?taskId=${task.getId()}"><i class="fa fa-pencil-square-o"
+                                                                                           aria-hidden="true"></i> Edit</a>
+                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
+                                       href="#confirm_delete_${task.getId()}"><i class="fa fa-times"
+                                                                                 aria-hidden="true"></i> Delete</a>
                                     <div class="modal fade" id="confirm_delete_${task.getId()}" role="dialog"
                                          aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -55,7 +58,8 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Are you sure to delete todo ${task.getId()} '${task.getTitle()}'?</p>
+                                                    <p>Are you sure to delete todo ${task.getId()}
+                                                        '${task.getTitle()}'?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="/user/todos/delete" method="post">
@@ -75,10 +79,10 @@
                         <tr>
                             <td colspan="2">
                                 <div align="center">Total = <span
-                                        class="badge badge-inverse">${requestScope.totalCount}</span></div>
+                                        class="badge badge-dark">${requestScope.totalCount}</span></div>
                             </td>
                             <td colspan="2">
-                                <div align="center">Todo = <span class="badge">${requestScope.todoCount}</span></div>
+                                <div align="center">Todo = <span class="badge badge-secondary">${requestScope.taskCount}</span></div>
                             </td>
                             <td colspan="2">
                                 <div align="center">Done = <span

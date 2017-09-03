@@ -2,6 +2,7 @@ package lv.javaguru.java2ToDoApp.controllers.user;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.UserService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.common.util.TaskListUtils;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,19 +41,16 @@ public class UserHomeController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        System.out.println(user.toString());
-
         List<Task> taskList = getTasks.getAllTasksByUser(user);
         request.setAttribute("taskList", taskList);
         request.setAttribute("homeTabStyle", "active");
 
         int totalCount = taskList.size();
-        //int doneCount = TodoListUtils.countTotalDone(todoList);
-        //int todoCount = totalCount - doneCount;
+        int doneCount = TaskListUtils.countTotalDone(taskList);
+        int taskCount = totalCount - doneCount;
         request.setAttribute("totalCount", totalCount);
-        //request.setAttribute("doneCount", doneCount);
-        //request.setAttribute("todoCount", todoCount);
-
+        request.setAttribute("doneCount", doneCount);
+        request.setAttribute("taskCount", taskCount);
         return new ModelAndView("user/UserHome", "model", null);
     }
 }

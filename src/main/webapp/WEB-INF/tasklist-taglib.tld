@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>takslist-taglib</short-name>
+    <uri>http://tasklist.org/taglib</uri>
+
+    <tag>
+        <description>Tag to transcode task priority to icon value</description>
+        <name>priorityIcon</name>
+        <tag-class>lv.javaguru.java2ToDoApp.common.tags.PriorityIconTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>priority</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Tag to transcode task status to css style</description>
+        <name>statusStyle</name>
+        <tag-class>lv.javaguru.java2ToDoApp.common.tags.StatusStyleTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>status</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Tag to transcode task status to label value</description>
+        <name>statusLabel</name>
+        <tag-class>lv.javaguru.java2ToDoApp.common.tags.StatusLabelTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>status</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+</taglib>
