@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tl" uri="http://tasklist.org/taglib" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/header.jspf" %>
@@ -39,17 +40,17 @@
                         <div class="form-group row">
                             <label class="text-right col-form-label col-2" for="status">Status:</label>
                             <select id="status" name="status" class="custom-select">
-                                <option value="false">Todo</option>
-                                <option value="true">Done</option>
+                                <option value="false" <tl:selectedTag status="${!task.isDone()}"/> >Todo</option>
+                                <option value="true" <tl:selectedTag status="${task.isDone()}"/>>Done</option>
                             </select>
                         </div>
 
                         <div class="form-group row">
                             <label class="text-right col-form-label col-2" for="priority">Priority:</label>
                             <select id="priority" name="priority" class="custom-select">
-                                <option value="LOW">Low</option>
-                                <option value="MEDIUM">Medium</option>
-                                <option value="HIGH">High</option>
+                                <option value="LOW" <tl:selectedTag status="${task.getPriority().toString() == 'LOW'}"/> >Low</option>
+                                <option value="MEDIUM" <tl:selectedTag status="${task.getPriority().toString() == 'MEDIUM'}"/>>Medium</option>
+                                <option value="HIGH" <tl:selectedTag status="${task.getPriority().toString() == 'HIGH'}"/>>High</option>
                             </select>
                         </div>
                         <input type="hidden" name="taskId" value="${requestScope.task.getId()}"/>

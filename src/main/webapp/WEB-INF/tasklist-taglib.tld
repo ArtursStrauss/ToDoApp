@@ -55,4 +55,16 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <description>Tag to transcode option selected status</description>
+        <name>selectedTag</name>
+        <tag-class>lv.javaguru.java2ToDoApp.common.tags.SelectedTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>status</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

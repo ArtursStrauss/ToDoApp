@@ -30,7 +30,7 @@
                             <tr>
                                 <td>${task.getId()}</td>
                                 <td>${task.getTitle()}</td>
-                                <td><fmt:formatDate value="${task.getDueDate()}" pattern="dd/MM/yyyy"/></td>
+                                <td><fmt:formatDate value="${task.getDueDate()}" pattern="yyyy-MM-dd"/></td>
                                 <td>
                                     <i class="fa fa-arrow-circle-<tl:priorityIcon priority="${task.getPriority()}"/>"></i>
                                         ${task.getPriority()}

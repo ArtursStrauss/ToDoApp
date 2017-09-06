@@ -37,6 +37,10 @@ public class TaskListUtils {
         return status ? "DONE" : "TODO";
     }
 
+    public static String getSelected(boolean status) {
+        return status ? "selected" : "";
+    }
+
     public static int countTotalDone(List<Task> todoList) {
         int count = 0;
         for (Task task : todoList) {
