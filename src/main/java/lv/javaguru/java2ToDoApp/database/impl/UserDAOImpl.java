@@ -36,6 +36,21 @@ public class UserDAOImpl implements UserDAO {
         return Optional.ofNullable(user);
     }
 
+    @Override
+    public void update(User user) {
+        session().update(user);
+    }
+
+    @Override
+    public void delete(User user) {
+
+        String sql = "delete from tasks where user_id = " + user.getId().toString(); //:userId;
+        //System.out.println(sql);
+        //session().createSQLQuery(sql).setLong("userId", user.getId()).executeUpdate();
+        session().createSQLQuery(sql).executeUpdate();
+        session().delete(user);
+    }
+
     private Session session() {
         return sessionFactory.getCurrentSession();
     }

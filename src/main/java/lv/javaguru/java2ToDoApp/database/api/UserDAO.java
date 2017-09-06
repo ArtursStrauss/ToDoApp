@@ -12,5 +12,8 @@ public interface UserDAO {
 
     Optional<User> getByLogin(String login);
 
+    void update(User user);
+
+    void delete(User user);
 
 }

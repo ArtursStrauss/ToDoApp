@@ -1,10 +1,10 @@
 package lv.javaguru.java2ToDoApp.businesslogic;
 
 import com.google.common.collect.Maps;
-import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserService;
+import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserRegistrationService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.user.RegisterUserServiceImpl;
+import lv.javaguru.java2ToDoApp.businesslogic.impl.user.UserRegistrationServiceImpl;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RegisterUserServiceTest {
+public class RegisterUserGetServiceTest {
 
     @Mock
     private UserDAO userDAO;
@@ -28,7 +28,7 @@ public class RegisterUserServiceTest {
     private RegisterUserValidator registerUserValidator;
 
     @InjectMocks
-    private RegisterUserService service = new RegisterUserServiceImpl();
+    private UserRegistrationService service = new UserRegistrationServiceImpl();
 
     @Test
     public void registerNewUserTest() {

@@ -11,7 +11,7 @@
             <%@ include file="../common/sidebar.jspf" %>
         </div>
         <div class="col-9">
-            <div class="card bg-light mt-3 p-1">
+            <div class="card bg-light mt-3">
                 <div class="card-body">
                     <h1 class="card-title">My Task list</h1>
                     <table class="table table-bordered table-striped">
@@ -82,7 +82,7 @@
                                         class="badge badge-dark">${requestScope.totalCount}</span></div>
                             </td>
                             <td colspan="2">
-                                <div align="center">Todo = <span class="badge badge-secondary">${requestScope.taskCount}</span></div>
+                                <div align="center">In Progress = <span class="badge badge-secondary">${requestScope.taskCount}</span></div>
                             </td>
                             <td colspan="2">
                                 <div align="center">Done = <span

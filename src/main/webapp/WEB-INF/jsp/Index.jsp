@@ -4,7 +4,7 @@
 <%@ include file="./common/header.jspf"%>
 
 <div class="container">
-  <div class="card bg-light">
+  <div class="card bg-light mt-3">
     <div class="card-body">
       <h3 class="card-title">Welcome to ToDo App</h3>
       <p>

@@ -14,7 +14,7 @@ public class LoginController {
     //@Autowired
     //private LoginService service;
     //@Autowired
-    //private UserService userService;
+    //private UserGetService userService;
 
     @RequestMapping(value = "login", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {

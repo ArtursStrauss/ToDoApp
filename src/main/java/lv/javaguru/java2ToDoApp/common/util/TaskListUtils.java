@@ -29,6 +29,10 @@ public class TaskListUtils {
         return status ? "badge-success" : "badge-secondary";
     }
 
+    public static String getInputStyle(boolean status) {
+        return status ? "is-invalid" : "";
+    }
+
     public static String getStatusLabel(boolean status) {
         return status ? "DONE" : "TODO";
     }

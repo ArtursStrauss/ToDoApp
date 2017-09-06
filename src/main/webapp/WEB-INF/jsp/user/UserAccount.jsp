@@ -12,6 +12,9 @@
             <div class="card bg-light mt-3 p-1">
                 <div class="card-body">
                     <h1 class="card-title">My settings</h1>
+
+                    <%@ include file="../common/error.jspf"%>
+
                     <div class="row">
                         <form action="/user/account/update" method="post">
                             <legend>Update my profile <p

@@ -44,4 +44,15 @@
         </attribute>
     </tag>
 
+    <tag>
+        <description>Tag to transcode input status to css style</description>
+        <name>inputStyle</name>
+        <tag-class>lv.javaguru.java2ToDoApp.common.tags.InputStyleTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>status</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

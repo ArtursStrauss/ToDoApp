@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.controllers.user;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.UserService;
+import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserGetService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
 import lv.javaguru.java2ToDoApp.common.util.TaskListUtils;
 import lv.javaguru.java2ToDoApp.domain.Task;
@@ -19,10 +19,10 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class UserHomeController {
+public class HomeController {
 
     @Autowired
-    private UserService userService;
+    private UserGetService userGetService;
 
     @Autowired
     private GetTasks getTasks;
@@ -33,7 +33,7 @@ public class UserHomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (request.getSession().getAttribute("user") == null) {
-            User user = userService.getByLogin(auth.getName());
+            User user = userGetService.getByLogin(auth.getName()).get();
             HttpSession session = request.getSession(true);//create session
             session.setAttribute("user", user);
         }
