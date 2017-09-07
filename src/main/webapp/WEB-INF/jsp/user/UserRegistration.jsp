@@ -14,8 +14,8 @@
 
                 <div class="form-row">
                     <div class="form-group col-4 mx-auto">
-                        <label class="form-control-label" for="name">Name:</label>
-                        <input id="name" name="name" type="text" class="form-control <tl:inputStyle status="${requestScope.errorFullName != null}"/>"/>
+                        <label class="form-control-label" for="fullName">Name:</label>
+                        <input id="fullName" name="fullName" type="text" class="form-control <tl:inputStyle status="${requestScope.errorFullName != null}"/>"/>
 
                         <c:if test="${requestScope.errorFullName != null}">
                             <div class="invalid-feedback">

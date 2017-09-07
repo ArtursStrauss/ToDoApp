@@ -5,12 +5,14 @@ import lv.javaguru.java2ToDoApp.businesslogic.api.LoginValidator;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Optional;
 
-@Component
+@Component()
+@Scope("prototype")
 public class LoginValidatorImpl implements LoginValidator {
 
     @Autowired

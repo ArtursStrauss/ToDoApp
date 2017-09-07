@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserUpdateController {
@@ -24,8 +23,8 @@ public class UserUpdateController {
         //Long id = Long.parseLong(request.getParameter("id"));
         String fullName = request.getParameter("name");
 
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        //HttpSession session = request.getSession();
+        User user = (User) request.getSession().getAttribute("user");
 
         user.setFullName(fullName);
 

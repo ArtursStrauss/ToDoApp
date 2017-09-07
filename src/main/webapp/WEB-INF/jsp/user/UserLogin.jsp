@@ -9,7 +9,11 @@
             <h2 class="card-title text-center">Sign in</h2>
 
             <%@ include file="../common/error.jspf" %>
-
+            <c:if test="${param.auth eq 'failure'}">
+                <div class="alert alert-danger" role="alert">
+                    <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+                </div>
+            </c:if>
             <form action="/login" method="POST">
                 <div class="form-group row justify-content-center">
                     <label class="text-right col-2 col-form-label" for="login">Login:</label>
@@ -19,7 +23,7 @@
                 <div class="form-group row justify-content-center">
                     <label class="text-right col-2 col-form-label" for="password">Password:</label>
                     <input type="password" id="password" name="password" class="form-control col-4"
-                           placeholder="min 6 characters" required="required"/>
+                           required="required"/>
                 </div>
                 <c:if test="${map != null}">
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">

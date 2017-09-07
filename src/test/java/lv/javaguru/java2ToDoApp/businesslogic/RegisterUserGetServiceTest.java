@@ -2,8 +2,7 @@ package lv.javaguru.java2ToDoApp.businesslogic;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserRegistrationService;
-import lv.javaguru.java2ToDoApp.businesslogic.api.RegisterUserValidator;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.user.UserRegistrationServiceImpl;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
@@ -25,17 +24,19 @@ public class RegisterUserGetServiceTest {
     @Mock
     private UserDAO userDAO;
     @Mock
-    private RegisterUserValidator registerUserValidator;
+    private RegistrationFormValidator registrationFormValidator;
+    @Mock
+    private User user;
 
     @InjectMocks
     private UserRegistrationService service = new UserRegistrationServiceImpl();
 
     @Test
     public void registerNewUserTest() {
-        doReturn(Maps.newHashMap()).when(registerUserValidator).validate("arturs", "test1", "test1");
-        Response result = service.register("arturs", "test1", "strauss arturs", "test1");
+        doReturn(Maps.newHashMap()).when(registrationFormValidator).validate("arturs", "test1", "test1");
+        user = service.register(user);
 
-        assertThat(result.isSuccess(), is(true));
+      //  assertThat(any(user ), is(true));
         verify(userDAO).save(any(User.class));
     }
 }

@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView processRootRequest(HttpServletRequest req, HttpServletResponse resp) {
+    public ModelAndView processRootRequest(HttpServletRequest request, HttpServletResponse response) {
 
         return new ModelAndView("Index", "model", "Hello from MVC");
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String processIndexRequest(HttpServletRequest req, HttpServletResponse resp) {
+    public String processIndexRequest(HttpServletRequest request, HttpServletResponse response) {
         return "redirect:/";
     }
 }

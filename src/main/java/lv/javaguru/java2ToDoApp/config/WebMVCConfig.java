@@ -1,8 +1,10 @@
 package lv.javaguru.java2ToDoApp.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -32,4 +34,11 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("loginMessages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 }
