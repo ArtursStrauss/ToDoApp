@@ -2,7 +2,7 @@ package lv.javaguru.java2ToDoApp.businesslogic;
 
 import com.google.common.collect.Lists;
 import lv.javaguru.java2ToDoApp.businesslogic.api.UpdateTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.task.UpdateTaskServiceImpl;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.task.UpdateTaskValidator;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;

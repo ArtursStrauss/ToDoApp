@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.businesslogic.api;
 
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
+import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
 
 import java.util.Map;

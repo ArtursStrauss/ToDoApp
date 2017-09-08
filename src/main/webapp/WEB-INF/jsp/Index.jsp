@@ -11,11 +11,11 @@
         <h4>ToDo App is a web-based task manager which allows you to:</h4>
         <ul>
           <li>Save and organize your todo list</li>
-          <li>Search easily your todo list</li>
-          <li>Sort and filter your todo list</li>
-          <li>Export and report your todo list</li>
+          <li>Search easily your task list</li>
+          <li>Sort and filter your task list</li>
+          <li>Export and report your task list</li>
         </ul>
-        <h4>And which is totally Free! Enjoy !</h4>
+        <!--<h4>And which is totally Free! Enjoy !</h4>-->
       </p>
 
       <c:if test="${sessionScope.user == null}">

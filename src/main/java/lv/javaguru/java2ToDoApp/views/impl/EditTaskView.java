@@ -1,8 +1,7 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.UpdateTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

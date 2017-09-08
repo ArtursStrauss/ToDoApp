@@ -2,8 +2,8 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl.user;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserRegistrationService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.common.Error;
+import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;

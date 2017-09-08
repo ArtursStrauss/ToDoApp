@@ -1,8 +1,8 @@
 package lv.javaguru.java2ToDoApp.controllers.user;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserRegistrationService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.common.Error;
+import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

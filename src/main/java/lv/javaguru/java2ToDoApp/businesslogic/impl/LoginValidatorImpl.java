@@ -2,6 +2,7 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.LoginValidator;
+import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import lv.javaguru.java2ToDoApp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;

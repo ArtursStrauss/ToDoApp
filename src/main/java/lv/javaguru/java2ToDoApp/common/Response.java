@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.businesslogic.impl;
+package lv.javaguru.java2ToDoApp.common;
 
 import java.util.Map;
 

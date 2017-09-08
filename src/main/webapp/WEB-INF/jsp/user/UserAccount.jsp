@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tl" uri="http://tasklist.org/taglib" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/header.jspf" %>
 <%--content--%>
@@ -13,7 +14,7 @@
                 <div class="card-body">
                     <h1 class="card-title">My settings</h1>
 
-                    <%@ include file="../common/error.jspf"%>
+                    <%@ include file="../common/error.jspf" %>
 
                     <div class="row">
                         <form action="/user/account/update" method="post">
@@ -39,34 +40,48 @@
 
                     <div class="row">
                         <form action="/user/account/password" method="post">
-                            <legend>Update my Password <p
-                                    class="alert-success">${requestScope.updatePasswordSuccessMessage}</p>
+                            <legend>Update my Password
+                                <c:if test="${requestScope.updatePasswordSuccessMessage != null}">
+                                    <div class="alert alert-success"
+                                         role="alert">${requestScope.updatePasswordSuccessMessage}</div>
+                                </c:if>
                             </legend>
                             <div class="form-group">
                                 <label for="currentPassword">Current password:</label>
                                 <input type="password" id="currentPassword" name="currentPassword"
-                                       class="form-control" placeholder="min 6 characters"
+                                       class="form-control <tl:inputStyle status="${requestScope.errorCurrentPassword != null}"/>"
+                                       placeholder="min 6 characters"
                                        required="required"/>
-                                <p class="help-block alert-error"><c:out
-                                        value="${requestScope.errorCurrentPassword}"/></p>
+                                <c:if test="${requestScope.errorCurrentPassword != null}">
+                                    <div class="invalid-feedback">
+                                        <c:out value="${requestScope.errorCurrentPassword}"/>
+                                    </div>
+                                </c:if>
                             </div>
 
                             <div class="form-group">
                                 <label for="newPassword">New password:</label>
                                 <input type="password" id="newPassword" name="newPassword"
-                                       class="form-control"
+                                       class="form-control <tl:inputStyle status="${requestScope.errorNewPassword != null}"/>"
                                        placeholder="min 6 characters" required="required"/>
-                                <p class="help-block alert-error"><c:out
-                                        value="${requestScope.errorNewPassword}"/></p>
+                                <c:if test="${requestScope.errorNewPassword != null}">
+                                    <div class="invalid-feedback">
+                                        <c:out value="${requestScope.errorNewPassword}"/>
+                                    </div>
+                                </c:if>
                             </div>
 
                             <div class="form-group">
                                 <label for="confirmationPassword">Confirmation password:</label>
                                 <input type="password" id="confirmationPassword" name="confirmationPassword"
-                                       class="form-control" placeholder="min 6 characters"
+                                       class="form-control <tl:inputStyle status="${requestScope.errorConfirmationPassword != null}"/>"
+                                       placeholder="min 6 characters"
                                        required="required"/>
-                                <p class="help-block alert-error"><c:out
-                                        value="${requestScope.errorConfirmationPassword}"/></p>
+                                <c:if test="${requestScope.errorConfirmationPassword != null}">
+                                    <div class="invalid-feedback">
+                                        <c:out value="${requestScope.errorConfirmationPassword}"/>
+                                    </div>
+                                </c:if>
                             </div>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-refresh"
                                                                              aria-hidden="true"></i> Update my password

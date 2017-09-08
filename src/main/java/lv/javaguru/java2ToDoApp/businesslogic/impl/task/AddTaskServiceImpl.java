@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.AddTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Response;
+import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;

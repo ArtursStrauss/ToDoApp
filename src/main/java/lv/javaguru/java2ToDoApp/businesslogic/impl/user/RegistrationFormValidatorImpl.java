@@ -2,7 +2,7 @@ package lv.javaguru.java2ToDoApp.businesslogic.impl.user;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
-import lv.javaguru.java2ToDoApp.businesslogic.impl.Error;
+import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,6 @@ public class RegistrationFormValidatorImpl implements RegistrationFormValidator 
 
     @Override
     public Map<String, Error> validate(RegistrationForm registrationForm) {
-        //List<Error> errors = Lists.newArrayList();
         Map<String, Error> errors = Maps.newHashMap();
 
         validateLogin(registrationForm).ifPresent(e -> errors.put("errorLogin", e));

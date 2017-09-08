@@ -1,6 +1,8 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.LoginService;
+import lv.javaguru.java2ToDoApp.common.Error;
+import lv.javaguru.java2ToDoApp.common.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
