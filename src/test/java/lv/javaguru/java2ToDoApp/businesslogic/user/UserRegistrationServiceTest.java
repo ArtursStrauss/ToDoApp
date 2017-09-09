@@ -2,7 +2,7 @@ package lv.javaguru.java2ToDoApp.businesslogic.user;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserRegistrationService;
-import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
+import lv.javaguru.java2ToDoApp.businesslogic.api.user.RegistrationFormValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.user.UserRegistrationServiceImpl;
 import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.hamcrest.CoreMatchers.is;

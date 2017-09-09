@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl.user;
 
 import com.google.common.collect.Maps;
-import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
+import lv.javaguru.java2ToDoApp.businesslogic.api.user.RegistrationFormValidator;
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
 import lv.javaguru.java2ToDoApp.database.api.UserDAO;

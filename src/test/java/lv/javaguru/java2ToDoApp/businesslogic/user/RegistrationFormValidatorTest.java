@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.businesslogic.user;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.RegistrationFormValidator;
+import lv.javaguru.java2ToDoApp.businesslogic.api.user.RegistrationFormValidator;
 import lv.javaguru.java2ToDoApp.businesslogic.impl.user.RegistrationFormValidatorImpl;
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
@@ -12,11 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.text.MessageFormat;
-import java.text.NumberFormat;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -39,6 +37,7 @@ public class RegistrationFormValidatorTest {
 
     @Before
     public void setUp() throws Exception {
+
         registrationForm = new RegistrationForm();
         resourceBundle = ResourceBundle.getBundle("ValidationMessages");
     }

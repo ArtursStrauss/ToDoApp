@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.businesslogic.api;
+package lv.javaguru.java2ToDoApp.businesslogic.api.user;
 
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;

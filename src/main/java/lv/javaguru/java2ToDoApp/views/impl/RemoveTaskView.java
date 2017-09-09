@@ -1,6 +1,5 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.RemoveTaskService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Task;
@@ -13,8 +12,6 @@ import java.util.Scanner;
 @Component
 public class RemoveTaskView implements View {
 
-    @Autowired
-    private RemoveTaskService removeTaskService;
     @Autowired
     private TaskGetService taskGetService;
 
@@ -30,15 +27,15 @@ public class RemoveTaskView implements View {
         ///////////////////BL/////////////////////////
         Optional<Task> task = taskGetService.getTaskById(id);
 
-        boolean result = removeTaskService.removeTask(task.get());
+        //boolean result = removeTaskService.removeTask(task.get());
 
         ////////////////////BL end /////////////////
 
-        if (result) {
-            System.out.println("Task " + task.get().toString() + " was found and will be removed from list!");
-        } else {
-            System.out.println("Task with ID " + id + " not found and not be removed from list!");
-        }
+        //if (result) {
+        //    System.out.println("Task " + task.get().toString() + " was found and will be removed from list!");
+        //} else {
+        //    System.out.println("Task with ID " + id + " not found and not be removed from list!");
+        //}
 
         System.out.println("Remove task from list execution end!");
         System.out.println();
