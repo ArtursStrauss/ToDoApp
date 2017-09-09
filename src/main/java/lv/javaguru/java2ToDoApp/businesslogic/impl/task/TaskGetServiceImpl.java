@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.businesslogic.impl.task;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.User;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class GetTasksImpl implements GetTasks {
+public class TaskGetServiceImpl implements TaskGetService {
 
     @Autowired
     private TaskDAO taskDAO;

@@ -89,8 +89,10 @@ public class ChangePasswordFormValidationImpl implements ChangePasswordFormValid
     }
 
     private Optional<Error> checkPasswordsMatch(ChangePasswordForm changePasswordForm) {
-        if (!changePasswordForm.getConfirmationPassword().equals(changePasswordForm.getNewPassword())) {
-            return Optional.of(new Error("confirmationPassword", resourceBundle.getString("account.password.confirmation.error")));
+        if (!validateConfirmationPassword(changePasswordForm).isPresent()) {
+            if (!changePasswordForm.getConfirmationPassword().equals(changePasswordForm.getNewPassword())) {
+                return Optional.of(new Error("confirmationPassword", resourceBundle.getString("account.password.confirmation.error")));
+            }
         }
         return Optional.empty();
     }

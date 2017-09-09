@@ -1,8 +1,5 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
-
-import lv.javaguru.java2ToDoApp.businesslogic.api.AddTaskService;
-import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,8 +10,6 @@ import java.util.Scanner;
 @Component
 public class AddTaskView implements View {
 
-    @Autowired
-    private AddTaskService addTaskService;
 
     @Override
     public void execute() {
@@ -34,7 +29,7 @@ public class AddTaskView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = addTaskService.addTask(title, "false", dueDate, priority);
+        //Response response = addTaskService.addTask(title, "false", dueDate, priority);
 
         //////////////BL END//////////
 

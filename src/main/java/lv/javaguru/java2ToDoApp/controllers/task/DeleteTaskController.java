@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.controllers.task;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskDeleteService;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 public class DeleteTaskController {
 
     @Autowired
-    private GetTasks getTasks;
+    private TaskGetService taskGetService;
 
     @Autowired
     private TaskDeleteService taskDeleteService;
@@ -28,7 +28,7 @@ public class DeleteTaskController {
         String taskId = request.getParameter("taskId");
         try {
             Long todoId = Long.parseLong(taskId);
-            Optional<Task> task = getTasks.getTaskById(todoId);
+            Optional<Task> task = taskGetService.getTaskById(todoId);
             if (task.isPresent()) {
                 taskDeleteService.delete(task.get());
                 return new ModelAndView("redirect:/user/todos", "model", null);

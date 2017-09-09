@@ -93,8 +93,11 @@ public class RegistrationFormValidatorImpl implements RegistrationFormValidator 
     }
 
     private Optional<Error> checkPasswordsMatch(RegistrationForm registrationForm) {
-        if (!registrationForm.getConfirmationPassword().equals(registrationForm.getPassword())) {
-            return Optional.of(new Error("confirmationPassword", resourceBundle.getString("register.error.password.confirmation.error")));
+
+        if(!validateConfirmationPassword(registrationForm).isPresent()) {
+            if (!registrationForm.getConfirmationPassword().equals(registrationForm.getPassword())) {
+                return Optional.of(new Error("confirmationPassword", resourceBundle.getString("register.error.password.confirmation.error")));
+            }
         }
         return Optional.empty();
     }

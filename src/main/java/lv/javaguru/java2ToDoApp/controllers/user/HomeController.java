@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.controllers.user;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.user.UserGetService;
-import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.common.util.TaskListUtils;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import lv.javaguru.java2ToDoApp.domain.User;
@@ -25,7 +25,7 @@ public class HomeController {
     private UserGetService userGetService;
 
     @Autowired
-    private GetTasks getTasks;
+    private TaskGetService taskGetService;
 
     @RequestMapping(value = "/user/todos", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -41,7 +41,7 @@ public class HomeController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        List<Task> taskList = getTasks.getAllTasksByUser(user);
+        List<Task> taskList = taskGetService.getAllTasksByUser(user);
         request.setAttribute("taskList", taskList);
         request.setAttribute("homeTabStyle", "active");
 

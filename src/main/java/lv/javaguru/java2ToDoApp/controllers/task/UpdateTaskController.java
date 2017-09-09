@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.controllers.task;
 
-import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskUpdateService;
 import lv.javaguru.java2ToDoApp.domain.Priority;
 import lv.javaguru.java2ToDoApp.domain.Task;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateTaskController {
 
     @Autowired
-    private GetTasks getTasks;
+    private TaskGetService taskGetService;
 
     @Autowired
     private TaskUpdateService taskUpdateService;
@@ -26,7 +26,7 @@ public class UpdateTaskController {
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("taskId");
         Long taskId = Long.parseLong(id);
-        Task task = getTasks.getTaskById(taskId).get(); // FIXME security : may provide an id for a todo of another user!
+        Task task = taskGetService.getTaskById(taskId).get(); // FIXME security : may provide an id for a todo of another user!
         request.setAttribute("task", task);
         return new ModelAndView("task/UpdateTask", "model", null);
     }
@@ -40,7 +40,7 @@ public class UpdateTaskController {
         String priority = request.getParameter("priority");
         String status = request.getParameter("status");
 
-        Task task = getTasks.getTaskById(taskId).get();
+        Task task = taskGetService.getTaskById(taskId).get();
 
         task.setTitle(title);
         task.setDueDate(dueDate);

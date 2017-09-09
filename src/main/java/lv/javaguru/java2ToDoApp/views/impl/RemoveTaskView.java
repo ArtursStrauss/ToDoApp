@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.views.impl;
 
 import lv.javaguru.java2ToDoApp.businesslogic.api.RemoveTaskService;
-import lv.javaguru.java2ToDoApp.businesslogic.api.task.GetTasks;
+import lv.javaguru.java2ToDoApp.businesslogic.api.task.TaskGetService;
 import lv.javaguru.java2ToDoApp.views.api.View;
 import lv.javaguru.java2ToDoApp.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class RemoveTaskView implements View {
     @Autowired
     private RemoveTaskService removeTaskService;
     @Autowired
-    private GetTasks getTasksService;
+    private TaskGetService taskGetService;
 
     @Override
     public void execute() {
@@ -28,7 +28,7 @@ public class RemoveTaskView implements View {
         final Long id = sc.nextLong();
 
         ///////////////////BL/////////////////////////
-        Optional<Task> task = getTasksService.getTaskById(id);
+        Optional<Task> task = taskGetService.getTaskById(id);
 
         boolean result = removeTaskService.removeTask(task.get());
 

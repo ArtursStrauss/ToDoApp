@@ -6,7 +6,7 @@ import lv.javaguru.java2ToDoApp.domain.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface GetTasks {
+public interface TaskGetService {
 
     List<Task> getAllTasks();
 

@@ -11,8 +11,6 @@ import java.util.Scanner;
 @Component
 public class EditTaskView implements View {
 
-    @Autowired
-    private UpdateTaskService updateTaskService;
 
     @Override
     public void execute() {
@@ -38,7 +36,7 @@ public class EditTaskView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = updateTaskService.updateTask(id, title, stringBoolean, dueDateString, priorityString);
+        //Response response = updateTaskService.updateTask(id, title, stringBoolean, dueDateString, priorityString);
 
         ///////////////////////BL END/////////////////
 

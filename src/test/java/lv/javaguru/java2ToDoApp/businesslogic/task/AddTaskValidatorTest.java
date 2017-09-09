@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.businesslogic;
+package lv.javaguru.java2ToDoApp.businesslogic.task;
 
 import lv.javaguru.java2ToDoApp.businesslogic.impl.task.AddTaskValidator;
 import lv.javaguru.java2ToDoApp.common.Error;
