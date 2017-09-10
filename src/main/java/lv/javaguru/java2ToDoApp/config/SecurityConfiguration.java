@@ -33,6 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/user/**").hasRole("USER").anyRequest().authenticated()
+                .antMatchers("/about").hasRole("USER").anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
                 .loginPage("/login").failureUrl("/login?auth=failure")
