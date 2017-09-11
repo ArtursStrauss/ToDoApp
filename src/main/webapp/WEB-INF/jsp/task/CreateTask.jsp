@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h1 class="card-title">Create Task</h1>
 
-                    <form id="createTaskForm" action="/user/todos/new" method="post">
+                    <form id="createTaskForm" action="/user/task/new" method="post">
                         <div class="form-group row">
                             <label class="text-right col-form-label col-2" for="title">Title:</label>
                             <input type="text" id="title" name="title" class="form-control col-4" required="required"

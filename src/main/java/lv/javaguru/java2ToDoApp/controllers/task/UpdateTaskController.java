@@ -22,7 +22,7 @@ public class UpdateTaskController {
     @Autowired
     private TaskUpdateService taskUpdateService;
 
-    @RequestMapping(value = "user/todos/update", method = {RequestMethod.GET})
+    @RequestMapping(value = "user/task/update", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("taskId");
         Long taskId = Long.parseLong(id);
@@ -31,8 +31,8 @@ public class UpdateTaskController {
         return new ModelAndView("task/UpdateTask", "model", null);
     }
 
-    @RequestMapping(value = "user/todos/update", method = {RequestMethod.POST})
-    public ModelAndView processPostRequest(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "user/task/update", method = {RequestMethod.POST})
+    public ModelAndView processPostRequest(HttpServletRequest request) {
 
         Long taskId = Long.parseLong(request.getParameter("taskId"));
         String title = request.getParameter("title");
@@ -47,7 +47,7 @@ public class UpdateTaskController {
         task.setDone(Boolean.valueOf(status));
         task.setPriority(Priority.valueOf(priority));
         taskUpdateService.update(task);
-        return new ModelAndView("redirect:/user/todos", "model", null);
+        return new ModelAndView("redirect:/user/tasks", "model", null);
     }
 }
 

@@ -22,13 +22,13 @@ public class CreateTaskController {
     @Autowired
     private TaskCreateService taskCreateService;
 
-    @RequestMapping(value = "user/todos/new", method = {RequestMethod.GET})
+    @RequestMapping(value = "user/task/new", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("today", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         return new ModelAndView("task/CreateTask", "model", null);
     }
 
-    @RequestMapping(value = "user/todos/new", method = {RequestMethod.POST})
+    @RequestMapping(value = "user/task/new", method = {RequestMethod.POST})
     public ModelAndView processPostRequest(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
@@ -48,6 +48,6 @@ public class CreateTaskController {
 
         taskCreateService.create(task);
 
-        return new ModelAndView("redirect:/user/todos", "model", null);
+        return new ModelAndView("redirect:/user/tasks", "model", null);
     }
 }

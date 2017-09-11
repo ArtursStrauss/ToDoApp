@@ -7,16 +7,17 @@
     <div class="card-body">
         <h6 class="card-title text-muted">Hi ${sessionScope.user.getFullName()}!</h6>
         <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="/user/todos"><i class="fa fa-home" style="color: black"
-                                                                      aria-hidden="true"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/tasks"><i class="fa fa-home" style="color: black"
+                                                                           aria-hidden="true"></i> Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/user/account"><i class="fa fa-user" style="color: black"
                                                                              aria-hidden="true"></i> My account</a></li>
-            <li class="nav-item"><a class="nav-link" href="/user/todos/new"><i class="fa fa-file" style="color: black"
-                                                                          aria-hidden="true"></i> Create a todo</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/task/new"><i class="fa fa-file" style="color: black"
+                                                                               aria-hidden="true"></i> Create a todo</a>
+            </li>
             <div class="dropdown-divider"></div>
             <h6 class="card-title text-muted">Search todo</h6>
             <li>
-                <form class="form-search" action="/todos/search" id="searchForm" method="get">
+                <form class="form-search" action="/user/task/search" id="searchForm" method="get">
                     <div class="input-group">
                         <input type="text" name="title" class="form-control" placeholder="search by title"
                                required="required">

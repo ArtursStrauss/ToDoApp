@@ -22,7 +22,7 @@ public class DeleteTaskController {
     @Autowired
     private TaskDeleteService taskDeleteService;
 
-    @RequestMapping(value = "user/todos/delete", method = {RequestMethod.POST})
+    @RequestMapping(value = "user/task/delete", method = {RequestMethod.POST})
     public ModelAndView processPostRequest(HttpServletRequest request, HttpServletResponse response) {
 
         String taskId = request.getParameter("taskId");
@@ -31,7 +31,7 @@ public class DeleteTaskController {
             Optional<Task> task = taskGetService.getTaskById(todoId);
             if (task.isPresent()) {
                 taskDeleteService.delete(task.get());
-                return new ModelAndView("redirect:/user/todos", "model", null);
+                return new ModelAndView("redirect:/user/tasks", "model", null);
             } else {
                 // TODO implement error page
                 return new ModelAndView("redirect:/", "model", null);

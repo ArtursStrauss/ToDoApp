@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h1 class="card-title">Update Task</h1>
 
-                    <form action="/user/todos/update" method="post">
+                    <form action="/user/task/update" method="post">
                         <div class="form-group row">
                             <label class="text-right col-form-label col-2" for="id">Todo Id:</label>
                             <input type="text" id="id" name="id" class="form-control col-4"

@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     private TaskGetService taskGetService;
 
-    @RequestMapping(value = "/user/todos", method = {RequestMethod.GET})
+    @RequestMapping(value = "/user/tasks", method = {RequestMethod.GET})
     public ModelAndView processGetRequest(HttpServletRequest request, HttpServletResponse response) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

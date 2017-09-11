@@ -13,4 +13,6 @@ public interface TaskGetService {
     List<Task> getAllTasksByUser(User user);
 
     Optional<Task> getTaskById(Long id);
+
+    List<Task> getTaskListByUserAndTitle(User user, String title);
 }

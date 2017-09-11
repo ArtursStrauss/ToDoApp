@@ -37,4 +37,11 @@ public class TaskGetServiceImpl implements TaskGetService {
 
         return taskDAO.getById(id);
     }
+
+    @Override
+    @Transactional
+    public List<Task> getTaskListByUserAndTitle(User user, String title) {
+
+        return taskDAO.getTaskListByUserAndTitle(user, title);
+    }
 }

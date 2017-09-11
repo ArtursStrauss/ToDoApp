@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.Optional;
@@ -72,6 +72,7 @@ public class TaskGetServiceTest {
         verify(taskDAO).getAllByUserId(new Long(1));
 
     }
+
     @Test
     public void getAllTasksByIdTest() {
 
@@ -82,5 +83,16 @@ public class TaskGetServiceTest {
         assertThat(result.isPresent(), is(true));
         verify(taskDAO).getById(new Long(1));
 
+    }
+
+    @Test
+    public void getTaskListByUserAndTitleTest() {
+
+        doReturn(Lists.newArrayList(task)).when(taskDAO).getTaskListByUserAndTitle(user, "buy milk");
+
+        List<Task> result = service.getTaskListByUserAndTitle(user, "buy milk");
+
+        assertThat(result, is(Lists.newArrayList(task)));
+        verify(taskDAO).getTaskListByUserAndTitle(user, "buy milk");
     }
 }

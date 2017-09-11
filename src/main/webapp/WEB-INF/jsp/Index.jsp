@@ -32,7 +32,7 @@
 
       <c:if test="${sessionScope.user != null}">
         <p>
-          <a class="btn btn-primary btn-large" href="user/todos">
+          <a class="btn btn-primary btn-large" href="user/tasks">
             Go to my Home page
           </a>
         </p>

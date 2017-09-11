@@ -2,6 +2,7 @@ package lv.javaguru.java2ToDoApp.database.impl;
 
 import lv.javaguru.java2ToDoApp.database.api.TaskDAO;
 import lv.javaguru.java2ToDoApp.domain.Task;
+import lv.javaguru.java2ToDoApp.domain.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -45,6 +46,15 @@ public class TaskDAOImpl implements TaskDAO {
         return session()
                 .createCriteria(Task.class)
                 .add(Restrictions.eq("userId", userId))
+                .list();
+    }
+
+    @Override
+    public List<Task> getTaskListByUserAndTitle(User user, String title){
+        return session()
+                .createCriteria(Task.class)
+                .add(Restrictions.eq("userId", user.getId()))
+                .add(Restrictions.like("title","%" + title + "%"))
                 .list();
     }
 

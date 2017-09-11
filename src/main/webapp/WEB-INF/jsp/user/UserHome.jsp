@@ -41,8 +41,9 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-primary"
-                                       href="/user/todos/update?taskId=${task.getId()}"><i class="fa fa-pencil-square-o"
-                                                                                           aria-hidden="true"></i> Edit</a>
+                                       href="/user/task/update?taskId=${task.getId()}"><i class="fa fa-pencil-square-o"
+                                                                                          aria-hidden="true"></i>
+                                        Edit</a>
                                     <a class="btn btn-sm btn-danger" data-toggle="modal"
                                        href="#confirm_delete_${task.getId()}"><i class="fa fa-times"
                                                                                  aria-hidden="true"></i> Delete</a>
@@ -62,7 +63,7 @@
                                                         '${task.getTitle()}'?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="/user/todos/delete" method="post">
+                                                    <form action="/user/task/delete" method="post">
                                                         <input type="hidden" name="taskId" value="${task.getId()}">
                                                         <a href="#" class="btn" data-dismiss="modal">Cancel</a>
                                                         <button type="submit" class="btn btn-primary">Confirm</button>
@@ -82,7 +83,8 @@
                                         class="badge badge-dark">${requestScope.totalCount}</span></div>
                             </td>
                             <td colspan="2">
-                                <div align="center">In Progress = <span class="badge badge-secondary">${requestScope.taskCount}</span></div>
+                                <div align="center">In Progress = <span
+                                        class="badge badge-secondary">${requestScope.taskCount}</span></div>
                             </td>
                             <td colspan="2">
                                 <div align="center">Done = <span
@@ -92,7 +94,7 @@
                         </tfoot>
                     </table>
                     <c:if test="${empty requestScope.taskList}">
-                        <div class="alert alert-info">
+                        <div class="alert alert-info" role="alert">
                             <div align="center">Your todo list is empty !</div>
                         </div>
                     </c:if>
