@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.common.util;
 
-import lv.javaguru.java2ToDoApp.domain.Priority;
-import lv.javaguru.java2ToDoApp.domain.Task;
+import lv.javaguru.java2ToDoApp.core.domain.Priority;
+import lv.javaguru.java2ToDoApp.core.domain.Task;
 
 import java.util.List;
 

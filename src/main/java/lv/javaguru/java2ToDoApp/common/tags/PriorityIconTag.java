@@ -2,7 +2,7 @@ package lv.javaguru.java2ToDoApp.common.tags;
 
 
 import lv.javaguru.java2ToDoApp.common.util.TaskListUtils;
-import lv.javaguru.java2ToDoApp.domain.Priority;
+import lv.javaguru.java2ToDoApp.core.domain.Priority;
 
 
 import javax.servlet.jsp.JspException;

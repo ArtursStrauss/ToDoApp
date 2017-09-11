@@ -1,11 +1,11 @@
 package lv.javaguru.java2ToDoApp;
 
-import lv.javaguru.java2ToDoApp.config.SpringAppConfig;
-import lv.javaguru.java2ToDoApp.views.api.View;
-import lv.javaguru.java2ToDoApp.views.impl.AddTaskView;
-import lv.javaguru.java2ToDoApp.views.impl.EditTaskView;
-import lv.javaguru.java2ToDoApp.views.impl.PrintTaskListView;
-import lv.javaguru.java2ToDoApp.views.impl.RemoveTaskView;
+import lv.javaguru.java2ToDoApp.core.config.SpringAppConfig;
+import lv.javaguru.java2ToDoApp.core.views.api.View;
+import lv.javaguru.java2ToDoApp.core.views.impl.AddTaskView;
+import lv.javaguru.java2ToDoApp.core.views.impl.EditTaskView;
+import lv.javaguru.java2ToDoApp.core.views.impl.PrintTaskListView;
+import lv.javaguru.java2ToDoApp.core.views.impl.RemoveTaskView;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

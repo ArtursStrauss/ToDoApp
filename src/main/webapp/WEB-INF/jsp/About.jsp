@@ -28,6 +28,10 @@
                             <td colspan="2"><strong>Frameworks</strong></td>
                         </tr>
                         <tr>
+                            <td><a href="http://www.oracle.com/technetwork/java/index-jsp-135475.html">Servlet / JSP</a></td>
+                            <td>3.0.1 / 2.3.1</td>
+                        </tr>
+                        <tr>
                             <td><a href="http://spring.io/">Spring</a></td>
                             <td>4.3.10</td>
                         </tr>
