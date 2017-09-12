@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.web.config;
+package lv.javaguru.java2ToDoApp.core.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
