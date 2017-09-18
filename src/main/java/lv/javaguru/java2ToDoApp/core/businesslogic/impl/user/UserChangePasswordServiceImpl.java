@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.core.businesslogic.impl.user;
 
-import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.ChangePasswordFormValidation;
+import lv.javaguru.java2ToDoApp.core.validators.api.ChangePasswordFormValidation;
 import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.UserChangePasswordService;
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.Response;

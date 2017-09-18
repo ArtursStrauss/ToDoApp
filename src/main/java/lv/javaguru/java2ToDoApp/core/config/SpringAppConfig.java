@@ -14,7 +14,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 @Configuration
 @ComponentScan(basePackages = {"lv.javaguru.java2ToDoApp.core"})
@@ -77,6 +81,17 @@ public class SpringAppConfig {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public Validator validator() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        return factory.getValidator();
+    }
+
+    @Bean
+    public ResourceBundle fieldErrorCodeMapping() {
+        return ResourceBundle.getBundle("fieldErrorCodeMapping");
     }
 }
 

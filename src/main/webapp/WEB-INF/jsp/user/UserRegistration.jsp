@@ -15,7 +15,8 @@
                 <div class="form-row">
                     <div class="form-group col-4 mx-auto">
                         <label class="form-control-label" for="fullName">Name:</label>
-                        <input id="fullName" name="fullName" type="text" class="form-control <tl:inputStyle status="${requestScope.errorFullName != null}"/>"/>
+                        <input id="fullName" name="fullName" type="text"
+                               class="form-control <tl:inputStyle status="${requestScope.errorFullName != null}"/>"/>
 
                         <c:if test="${requestScope.errorFullName != null}">
                             <div class="invalid-feedback">
@@ -28,7 +29,8 @@
                 <div class="form-row">
                     <div class="form-group col-4 mx-auto">
                         <label class="form-control-label" for="login">Login</label>
-                        <input id="login" name="login" type="text" class="form-control <tl:inputStyle status="${requestScope.errorLogin != null}"/>"/>
+                        <input id="login" name="login" type="text"
+                               class="form-control <tl:inputStyle status="${requestScope.errorLogin != null}"/>"/>
                         <c:if test="${requestScope.errorLogin != null}">
                             <div class="invalid-feedback">
                                 <c:out value="${requestScope.errorLogin}"/>
@@ -40,7 +42,8 @@
                 <div class="form-row">
                     <div class="form-group col-4 mx-auto">
                         <label class="form-control-label" for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control <tl:inputStyle status="${requestScope.errorPassword != null}"/>"
+                        <input type="password" id="password" name="password"
+                               class="form-control <tl:inputStyle status="${requestScope.errorPassword != null}"/>"
                                placeholder="min 6 characters"/>
                         <c:if test="${requestScope.errorPassword != null}">
                             <div class="invalid-feedback">

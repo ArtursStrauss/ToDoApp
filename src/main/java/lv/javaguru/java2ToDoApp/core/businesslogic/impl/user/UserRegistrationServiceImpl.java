@@ -1,6 +1,6 @@
 package lv.javaguru.java2ToDoApp.core.businesslogic.impl.user;
 
-import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.RegistrationFormValidator;
+import lv.javaguru.java2ToDoApp.core.validators.api.RegistrationFormValidation;
 import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.UserRegistrationService;
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.Response;
@@ -22,7 +22,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     private UserDAO userDAO;
 
     @Autowired
-    private RegistrationFormValidator registrationFormValidator;
+    private RegistrationFormValidation registrationFormValidation;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -31,7 +31,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     @Transactional
     public Response register(RegistrationForm registrationForm) {
 
-        Map<String, Error> validationErrors = registrationFormValidator.validate(registrationForm);
+        Map<String, Error> validationErrors = registrationFormValidation.validate(registrationForm);
         if (!validationErrors.isEmpty()) {
             return Response.createFailResponse(validationErrors);
         }

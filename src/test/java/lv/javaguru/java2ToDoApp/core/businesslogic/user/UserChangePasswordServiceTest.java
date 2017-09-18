@@ -1,7 +1,7 @@
 package lv.javaguru.java2ToDoApp.core.businesslogic.user;
 
 import com.google.common.collect.Maps;
-import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.ChangePasswordFormValidation;
+import lv.javaguru.java2ToDoApp.core.validators.api.ChangePasswordFormValidation;
 import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.UserChangePasswordService;
 import lv.javaguru.java2ToDoApp.core.businesslogic.impl.user.UserChangePasswordServiceImpl;
 import lv.javaguru.java2ToDoApp.common.Response;

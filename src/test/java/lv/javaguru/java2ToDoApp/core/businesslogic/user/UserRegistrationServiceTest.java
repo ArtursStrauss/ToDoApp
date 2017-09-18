@@ -2,7 +2,7 @@ package lv.javaguru.java2ToDoApp.core.businesslogic.user;
 
 import com.google.common.collect.Maps;
 import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.UserRegistrationService;
-import lv.javaguru.java2ToDoApp.core.businesslogic.api.user.RegistrationFormValidator;
+import lv.javaguru.java2ToDoApp.core.validators.api.RegistrationFormValidation;
 import lv.javaguru.java2ToDoApp.core.businesslogic.impl.user.UserRegistrationServiceImpl;
 import lv.javaguru.java2ToDoApp.common.Response;
 import lv.javaguru.java2ToDoApp.common.form.RegistrationForm;
@@ -30,7 +30,7 @@ public class UserRegistrationServiceTest {
     @Mock
     private UserDAO userDAO;
     @Mock
-    private RegistrationFormValidator registrationFormValidator;
+    private RegistrationFormValidation registrationFormValidation;
     @Mock
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -51,7 +51,7 @@ public class UserRegistrationServiceTest {
 
     @Test
     public void registerNewUserTest() {
-        doReturn(Maps.newHashMap()).when(registrationFormValidator).validate(registrationForm);
+        doReturn(Maps.newHashMap()).when(registrationFormValidation).validate(registrationForm);
         Response response = service.register(registrationForm);
 
         assertThat(response.isSuccess(), is(true));

@@ -1,4 +1,4 @@
-package lv.javaguru.java2ToDoApp.core.businesslogic.api.user;
+package lv.javaguru.java2ToDoApp.core.validators.api;
 
 import lv.javaguru.java2ToDoApp.common.Error;
 import lv.javaguru.java2ToDoApp.common.form.ChangePasswordForm;

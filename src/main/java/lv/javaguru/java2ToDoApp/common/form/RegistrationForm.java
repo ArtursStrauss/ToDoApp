@@ -1,6 +1,7 @@
 package lv.javaguru.java2ToDoApp.common.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.Size;
 
 public class RegistrationForm {
@@ -49,5 +50,15 @@ public class RegistrationForm {
 
     public void setConfirmationPassword(String confirmationPassword) {
         this.confirmationPassword = confirmationPassword;
+    }
+
+    @Override
+    public String toString() {
+        return "RegistrationForm{" +
+                "login='" + login + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmationPassword='" + confirmationPassword + '\'' +
+                '}';
     }
 }
