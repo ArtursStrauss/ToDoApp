@@ -40,12 +40,13 @@ public class ChangePasswordCustomValidationTest {
         changePasswordForm.setCurrentPassword("test123");
         changePasswordForm.setNewPassword("test123");
         changePasswordForm.setConfirmationPassword("test123");
+
+        user = createUser();
     }
 
     @Test
     public void checkPasswordsMatchEqualsTest() {
 
-        user = createUser();
         doReturn(true).when(bCryptPasswordEncoder).matches(changePasswordForm.getNewPassword(), user.getPassword());
 
         changePasswordForm.setConfirmationPassword("test124");
@@ -60,7 +61,6 @@ public class ChangePasswordCustomValidationTest {
     @Test
     public void checkPasswordsMatchNullTest() {
 
-        user = createUser();
         doReturn(true).when(bCryptPasswordEncoder).matches(changePasswordForm.getNewPassword(), user.getPassword());
 
         changePasswordForm.setConfirmationPassword(null);
@@ -75,7 +75,6 @@ public class ChangePasswordCustomValidationTest {
     @Test
     public void checkCurrentPasswordsMatchTest() {
 
-        user = createUser();
         doReturn(true).when(bCryptPasswordEncoder).matches(changePasswordForm.getNewPassword(), user.getPassword());
 
         errors = changePasswordCustomValidation.validate(changePasswordForm, user);
@@ -87,8 +86,6 @@ public class ChangePasswordCustomValidationTest {
 
     @Test
     public void checkCurrentPasswordsMatchNullTest() {
-
-        user = createUser();
 
         changePasswordForm.setNewPassword(null);
 

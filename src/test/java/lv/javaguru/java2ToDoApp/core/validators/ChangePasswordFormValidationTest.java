@@ -40,12 +40,12 @@ public class ChangePasswordFormValidationTest {
     @Before
     public void setUp() throws Exception {
         changePasswordForm = new ChangePasswordForm();
+
+        user = createUser();
     }
 
     @Test
     public void standardValidateTest() {
-
-        user = createUser();
 
         Map<String, Error> errors = new HashMap<String, Error>() {{
             put("test", new Error("test", "test"));
@@ -61,8 +61,6 @@ public class ChangePasswordFormValidationTest {
 
     @Test
     public void customValidateTest() {
-
-        user = createUser();
 
         doReturn(Maps.newHashMap()).when(formStandardValidation).validate(changePasswordForm);
         doReturn(Maps.newHashMap()).when(changePasswordCustomValidation).validate(changePasswordForm, user);

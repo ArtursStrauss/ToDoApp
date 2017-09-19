@@ -36,8 +36,6 @@ public class FormStandardValidationTest {
         changePasswordForm.setCurrentPassword("test123");
         changePasswordForm.setNewPassword("test123");
         changePasswordForm.setConfirmationPassword("test123");
-
-        errors = Maps.newHashMap();
     }
 
     @Test
