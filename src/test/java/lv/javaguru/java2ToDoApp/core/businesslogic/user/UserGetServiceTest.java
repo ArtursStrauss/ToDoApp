@@ -20,9 +20,10 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserGetServiceTest {
+
+    private User user;
     @Mock
     private UserDAO userDAO;
-    private User user;
 
     @InjectMocks
     private UserGetService service = new UserGetServiceImpl();
@@ -30,10 +31,7 @@ public class UserGetServiceTest {
     @Test
     public void getByLoginTest() {
 
-        user = UserBuilder.createUser()
-                .withId(new Long(1))
-                .withLogin("testUser")
-                .build();
+        user = createUser();
 
         doReturn(Optional.of(user)).when(userDAO).getByLogin("testUser");
 
@@ -41,5 +39,12 @@ public class UserGetServiceTest {
 
         assertThat(result.isPresent(), is(true));
         verify(userDAO).getByLogin("testUser");
+    }
+
+    private User createUser() {
+        return UserBuilder.createUser()
+                .withId(new Long(1))
+                .withLogin("testUser")
+                .build();
     }
 }

@@ -24,7 +24,7 @@ public class TaskUpdateServiceTest {
     private TaskUpdateService service = new TaskUpdateServiceImpl();
 
     @Test
-    public void deleteTaskTest(){
+    public void deleteTaskTest() {
 
         service.update(task);
 

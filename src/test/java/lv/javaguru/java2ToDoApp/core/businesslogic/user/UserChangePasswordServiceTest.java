@@ -28,8 +28,9 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class UserChangePasswordServiceTest {
 
-    private ChangePasswordForm changePasswordForm;
     private User user;
+    private ChangePasswordForm changePasswordForm;
+
     @Mock
     private UserDAO userDAO;
     @Mock
@@ -50,11 +51,7 @@ public class UserChangePasswordServiceTest {
         changePasswordForm.setNewPassword("test1234");
         changePasswordForm.setConfirmationPassword("test1234");
 
-        user = UserBuilder.createUser()
-                .withId(new Long(1))
-                .withLogin("userTest")
-                .withPassword("test123")
-                .build();
+        user = createUser();
     }
 
     @Test
@@ -69,5 +66,13 @@ public class UserChangePasswordServiceTest {
         verify(bCryptPasswordEncoder).encode(changePasswordForm.getNewPassword());
         verify(userDAO).save(any(User.class));
 
+    }
+
+    private User createUser() {
+        return UserBuilder.createUser()
+                .withId(new Long(1))
+                .withLogin("userTest")
+                .withPassword("test123")
+                .build();
     }
 }

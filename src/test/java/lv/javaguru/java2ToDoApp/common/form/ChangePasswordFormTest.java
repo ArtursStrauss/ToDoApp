@@ -9,8 +9,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ChangePasswordFormTest {
 
@@ -38,8 +38,8 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "currentPassword");
-        assertEquals(getMessageTemplate(violations), "{update.currentPassword.required}");
+        assertTrue(propertyViolationExists(violations, "currentPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.currentPassword.required}"));
     }
 
     @Test
@@ -50,8 +50,8 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "newPassword");
-        assertEquals(getMessageTemplate(violations), "{update.newPassword.required}");
+        assertTrue(propertyViolationExists(violations, "newPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.newPassword.required}"));
     }
 
     @Test
@@ -62,8 +62,8 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "confirmationPassword");
-        assertEquals(getMessageTemplate(violations), "{update.confirmationPassword.required}");
+        assertTrue(propertyViolationExists(violations, "confirmationPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.confirmationPassword.required}"));
     }
 
     @Test
@@ -74,8 +74,8 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "currentPassword");
-        assertEquals(getMessageTemplate(violations), "{update.currentPassword.size}");
+        assertTrue(propertyViolationExists(violations, "currentPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.currentPassword.size}"));
     }
 
     @Test
@@ -86,8 +86,8 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "newPassword");
-        assertEquals(getMessageTemplate(violations), "{update.newPassword.size}");
+        assertTrue(propertyViolationExists(violations, "newPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.newPassword.size}"));
     }
 
     @Test
@@ -98,15 +98,23 @@ public class ChangePasswordFormTest {
         violations = validator.validate(changePasswordForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "confirmationPassword");
-        assertEquals(getMessageTemplate(violations), "{update.confirmationPassword.size}");
+        assertTrue(propertyViolationExists(violations, "confirmationPassword"));
+        assertTrue(violationMessageTemplate(violations, "{update.confirmationPassword.size}"));
     }
 
-    private String getViolatedProperty(Set<ConstraintViolation<ChangePasswordForm>> violations) {
-        return violations.iterator().next().getPropertyPath().toString();
+    private String getViolatedProperty(ConstraintViolation<ChangePasswordForm> violation) {
+        return violation.getPropertyPath().toString();
     }
 
-    private String getMessageTemplate(Set<ConstraintViolation<ChangePasswordForm>> violations) {
-        return violations.iterator().next().getMessageTemplate();
+    private String getMessageTemplate(ConstraintViolation<ChangePasswordForm> violation) {
+        return violation.getMessageTemplate();
+    }
+
+    private boolean propertyViolationExists(Set<ConstraintViolation<ChangePasswordForm>> violations, String property) {
+        return violations.stream().anyMatch(e -> getViolatedProperty(e).equals(property));
+    }
+
+    private boolean violationMessageTemplate(Set<ConstraintViolation<ChangePasswordForm>> violations, String message) {
+        return violations.stream().anyMatch(e -> getMessageTemplate(e).equals(message));
     }
 }

@@ -17,24 +17,27 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class UserUpdateServiceTest {
 
+    private User user;
     @Mock
     private UserDAO userDAO;
-    private User user;
 
     @InjectMocks
     private UserUpdateService service = new UserUpdateServiceImpl();
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
 
-        user = UserBuilder.createUser()
-                .withId(new Long(1))
-                .withLogin("testUser")
-                .build();
+        user = createUser();
 
         service.update(user);
 
         verify(userDAO).update(any(User.class));
+    }
 
+    private User createUser() {
+        return UserBuilder.createUser()
+                .withId(new Long(1))
+                .withLogin("testUser")
+                .build();
     }
 }

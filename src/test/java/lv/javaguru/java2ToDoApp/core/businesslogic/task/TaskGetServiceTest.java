@@ -25,29 +25,21 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TaskGetServiceTest {
-    @Mock
-    private TaskDAO taskDAO;
 
     private Task task;
     private User user;
+
+    @Mock
+    private TaskDAO taskDAO;
 
     @InjectMocks
     private TaskGetService service = new TaskGetServiceImpl();
 
     @Before
     public void setUp() throws Exception {
-        task = TaskBuilder.createTask()
-                .withId(new Long(1))
-                .withTitle("buy milk")
-                .withDone("false")
-                .withDueDate("2017-09-09")
-                .withPriority("LOW")
-                .withUserId(new Long(1))
-                .build();
+        task = createTask();
 
-        user = UserBuilder.createUser()
-                .withId(new Long(1))
-                .build();
+        user = createUser();
     }
 
     @Test
@@ -94,5 +86,22 @@ public class TaskGetServiceTest {
 
         assertThat(result, is(Lists.newArrayList(task)));
         verify(taskDAO).getTaskListByUserAndTitle(user, "buy milk");
+    }
+
+    private Task createTask() {
+        return TaskBuilder.createTask()
+                .withId(new Long(1))
+                .withTitle("buy milk")
+                .withDone("false")
+                .withDueDate("2017-09-09")
+                .withPriority("LOW")
+                .withUserId(new Long(1))
+                .build();
+    }
+
+    private User createUser() {
+        return UserBuilder.createUser()
+                .withId(new Long(1))
+                .build();
     }
 }

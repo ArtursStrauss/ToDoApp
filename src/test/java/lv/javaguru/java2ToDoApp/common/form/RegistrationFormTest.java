@@ -9,8 +9,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class RegistrationFormTest {
 
@@ -40,8 +40,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "login");
-        assertEquals(getMessageTemplate(violations), "{registration.error.login.required}");
+        assertTrue(propertyViolationExists(violations, "login"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.login.required}"));
     }
 
     @Test
@@ -52,8 +52,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "login");
-        assertEquals(getMessageTemplate(violations), "{registration.error.login.required}");
+        assertTrue(propertyViolationExists(violations, "login"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.login.required}"));
     }
 
     @Test
@@ -64,8 +64,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "fullName");
-        assertEquals(getMessageTemplate(violations), "{registration.error.fullName.required}");
+        assertTrue(propertyViolationExists(violations, "fullName"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.fullName.required}"));
     }
 
     @Test
@@ -76,8 +76,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "fullName");
-        assertEquals(getMessageTemplate(violations), "{registration.error.fullName.required}");
+        assertTrue(propertyViolationExists(violations, "fullName"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.fullName.required}"));
     }
 
     @Test
@@ -88,8 +88,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "password");
-        assertEquals(getMessageTemplate(violations), "{registration.error.password.required}");
+        assertTrue(propertyViolationExists(violations, "password"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.password.required}"));
     }
 
     @Test
@@ -98,11 +98,10 @@ public class RegistrationFormTest {
         registrationForm.setPassword("");
 
         violations = validator.validate(registrationForm);
-        //System.out.println(registrationForm);
-        //System.out.println(violations);
+
         assertFalse(violations.isEmpty());
-        assertEquals("password", getViolatedProperty(violations));
-        assertEquals("{registration.error.password.required}", getMessageTemplate(violations));
+        assertTrue(propertyViolationExists(violations, "password"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.password.required}"));
     }
 
     @Test
@@ -113,8 +112,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "confirmationPassword");
-        assertEquals(getMessageTemplate(violations), "{registration.error.confirmationPassword.required}");
+        assertTrue(propertyViolationExists(violations, "confirmationPassword"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.confirmationPassword.required}"));
     }
 
     @Test
@@ -125,8 +124,8 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "password");
-        assertEquals(getMessageTemplate(violations), "{registration.error.password.size}");
+        assertTrue(propertyViolationExists(violations, "password"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.password.size}"));
     }
 
     @Test
@@ -137,15 +136,23 @@ public class RegistrationFormTest {
         violations = validator.validate(registrationForm);
 
         assertFalse(violations.isEmpty());
-        assertEquals(getViolatedProperty(violations), "confirmationPassword");
-        assertEquals(getMessageTemplate(violations), "{registration.error.confirmationPassword.size}");
+        assertTrue(propertyViolationExists(violations, "confirmationPassword"));
+        assertTrue(violationMessageTemplate(violations, "{registration.error.confirmationPassword.size}"));
     }
 
-    private String getViolatedProperty(Set<ConstraintViolation<RegistrationForm>> violations) {
-        return violations.iterator().next().getPropertyPath().toString();
+    private String getViolatedProperty(ConstraintViolation<RegistrationForm> violation) {
+        return violation.getPropertyPath().toString();
     }
 
-    private String getMessageTemplate(Set<ConstraintViolation<RegistrationForm>> violations) {
-        return violations.iterator().next().getMessageTemplate();
+    private String getMessageTemplate(ConstraintViolation<RegistrationForm> violation) {
+        return violation.getMessageTemplate();
+    }
+
+    private boolean propertyViolationExists(Set<ConstraintViolation<RegistrationForm>> violations, String property) {
+        return violations.stream().anyMatch(e -> getViolatedProperty(e).equals(property));
+    }
+
+    private boolean violationMessageTemplate(Set<ConstraintViolation<RegistrationForm>> violations, String message) {
+        return violations.stream().anyMatch(e -> getMessageTemplate(e).equals(message));
     }
 }

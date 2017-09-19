@@ -28,10 +28,8 @@ public class TaskCreateServiceTest {
     @Test
     public void createTaskTest() {
 
-        //doReturn(Lists.newArrayList()).when(addTaskValidator).validate("buy milk", "false", "2017-09-09", "LOW");
         service.create(task);
 
-        // assertThat(result.isSuccess(), is(true));
         verify(taskDAO).save(any(Task.class));
     }
 }

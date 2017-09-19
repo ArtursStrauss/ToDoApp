@@ -16,24 +16,28 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserDeleteServiceTest {
+
+    private User user;
     @Mock
     private UserDAO userDAO;
-    private User user;
 
     @InjectMocks
     private UserDeleteService service = new UserDeleteServiceImpl();
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
 
-        user = UserBuilder.createUser()
-                .withId(new Long(1))
-                .withLogin("testUser")
-                .build();
+        user = createUser();
 
         service.delete(user);
 
         verify(userDAO).delete(any(User.class));
+    }
 
+    private User createUser() {
+        return UserBuilder.createUser()
+                .withId(new Long(1))
+                .withLogin("testUser")
+                .build();
     }
 }

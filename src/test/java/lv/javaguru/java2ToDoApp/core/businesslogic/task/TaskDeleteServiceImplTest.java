@@ -24,9 +24,17 @@ public class TaskDeleteServiceImplTest {
     private TaskDeleteService service = new TaskDeleteServiceImpl();
 
     @Test
-    public void deleteTaskTest(){
+    public void deleteTaskTest() {
 
-        task = TaskBuilder.createTask()
+        task = createTask();
+
+        service.delete(task);
+
+        verify(taskDAO).delete(any(Task.class));
+    }
+
+    private Task createTask() {
+        return TaskBuilder.createTask()
                 .withId(new Long(1))
                 .withTitle("buy milk")
                 .withDone("false")
@@ -34,9 +42,5 @@ public class TaskDeleteServiceImplTest {
                 .withPriority("LOW")
                 .withUserId(new Long(1))
                 .build();
-
-        service.delete(task);
-
-        verify(taskDAO).delete(any(Task.class));
     }
 }
